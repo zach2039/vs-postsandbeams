@@ -1,0 +1,36 @@
+[
+	{
+		ingredientPattern: "SK,_L,_L",
+		ingredients: {
+			"S": { type: "item", code: "game:saw-*", isTool: true  },
+			"K": { type: "item", code: "game:knife-*", isTool: true  },
+			"L": { type: "block", code: "game:log-placed-*-ud", name: "wood" }			
+		},
+		width: 2,
+		height: 3,
+		recipeGroup: 1,
+		output: { type: "block", code: "postsandbeams:woodenpost-{wood}-ew", quantity: 8  }
+	},
+	{
+		ingredientPattern: "SK,_L,_L",
+		ingredients: {
+			"S": { type: "item", code: "game:saw-*", isTool: true  },
+			"K": { type: "item", code: "game:knife-*", isTool: true  },
+			"L": { type: "block", code: "game:logsection-placed-*-ne-ud", name: "wood" }
+		},
+		width: 2,
+		height: 3,
+		recipeGroup: 1,
+		output: { type: "block", code: "postsandbeams:woodenpost-{wood}-ew", quantity: 8  }
+	},
+	{
+		ingredientPattern: "B",
+		ingredients: {
+			"B": { type: "block", code: "postsandbeams:woodenbeam-*-ns", name: "wood" }
+		},
+		width: 1,
+		height: 1,
+		shapeless: true,
+		output: { type: "block", code: "postsandbeams:woodenpost-{wood}-ew", quantity: 1  }
+	}
+]

@@ -1,0 +1,14 @@
+{
+  "type": "code",
+  "modid": "postsandbeams",
+  "name": "Posts and Beams",
+  "authors": ["Zach2039"],
+  "description": "Adds wood beams and posts",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": "1.7.9"
+  },
+  "Side": "Universal",
+  "RequiredOnClient": true,
+  "RequiredOnServer": true
+}

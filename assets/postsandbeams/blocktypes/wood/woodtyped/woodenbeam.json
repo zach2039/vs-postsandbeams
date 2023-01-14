@@ -1,0 +1,85 @@
+{
+	code: "woodenbeam",
+	class: "Block",
+	behaviors: [
+		{ name: "NWOrientable" },
+		{ name: "CanAttach", properties: { sides: ["up"] } },
+		{ name: "RopeTieable" }
+	],
+	variantgroups: [
+		{ code: "wood", states: ["aged"], loadFromProperties: "game:block/wood" },
+		{ code: "orientation", states: ["ns", "we"] }
+	],
+	attributes: {
+		postConnect: {
+			"ns": true, 
+			"we": true 
+		},
+		handbook: {
+			groupBy: ["woodenbeam-*"]
+		}
+	},
+	shapeByType: {
+		"*-ns": { base: "postsandbeams:block/wood/beam", rotateY: 90 },
+		"*-we": { base: "postsandbeams:block/wood/beam", rotateY: 0 }
+	},
+	heldTpIdleAnimation: "holdunderarm",
+	creativeinventory: { "general": ["*-ns"], "decorative": ["*-ns"] },
+	blockmaterial: "Wood",
+	textures: {
+		"bark-h": { 
+			baseByType: {
+				"*": "game:block/wood/bark/{wood}-h"
+			},
+			overlays: ["game:block/slightlydarker"]
+		},
+		"cut": { 
+			baseByType: {
+				"*": "game:block/wood/debarked/{wood}"
+			}
+		}
+	},
+	replaceable: 600,
+	resistance: 3,
+	lightAbsorption: 1,
+	sidesolid: {
+		all: false
+	},	
+	sideopaque: {
+		all: false
+	},
+	sounds: {
+		"place": "game:block/planks",
+		"hit": "game:block/planks",
+		"break": "game:block/planks",
+		"walk": "game:walk/wood"
+	},
+	collisionbox: { 
+		x1: 0.0, y1: 0.5, z1: 0.25, x2: 1.0, y2: 1.0, z2: 0.75,
+		rotateYByType: {
+			"*-ns": 90,
+			"*-we": 0
+		}
+	},
+	selectionbox: { 
+		x1: 0.0, y1: 0.5, z1: 0.25, x2: 1.0, y2: 1.0, z2: 0.75,
+		rotateYByType: {
+			"*-ns": 90,
+			"*-we": 0
+		}
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 20,
+	},
+	materialDensity: 600,
+	tpHandTransform: {
+		translation: { x: -0.8, y: -0.68, z: -0.41 },
+		rotation: { x: 99, y: -10, z: -6 },
+		scale: 0.5
+	},
+	fpHandTransform: {
+		translation: { x: 0.08, y: -0.2, z: 0.6 },
+		rotation: { x: 33, y: 134, z: -102 }
+	}
+}

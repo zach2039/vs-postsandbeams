@@ -1,0 +1,144 @@
+{
+	code: "woodenpost",
+	class: "BlockPost",
+	behaviors: [ {name: "CanAttach", properties: { sides: ["up", "down"] } }, { name: "RopeTieable" } ],
+	attributes: {
+		handbook: {
+			groupBy: ["woodenpost-*"]
+		}
+	},
+	variantgroups: [
+		{ code: "wood", states: ["aged"], loadFromProperties: "game:block/wood" },
+		{ code: "type", states: ["empty", "n", "e", "s", "w", "ne", "ns", "nw", "es", "ew", "sw", "nes", "new", "nsw", "esw", "nesw"] }
+	],
+	creativeinventory: { "general": ["woodenpost-*-ew"], "decorative": ["woodenpost-*-ew"] },	
+	shapebytype: {
+		"*-empty": { base: "postsandbeams:block/wood/post/empty" },
+		"*-n": { base: "postsandbeams:block/wood/post/w", rotateY: 270 },
+		"*-e": { base: "postsandbeams:block/wood/post/w", rotateY: 180 },
+		"*-s": { base: "postsandbeams:block/wood/post/w", rotateY: 90 },
+		"*-w": { base: "postsandbeams:block/wood/post/w", rotateY: 0 },
+
+		"*-ns": { base: "postsandbeams:block/wood/post/ew", rotateY: 90 },
+		"*-ew": { base: "postsandbeams:block/wood/post/ew", rotateY: 0 },
+		
+		"*-ne": { base: "postsandbeams:block/wood/post/sw", rotateY: 180 },
+		"*-nw": { base: "postsandbeams:block/wood/post/sw", rotateY: 270 },
+		"*-es": { base: "postsandbeams:block/wood/post/sw", rotateY: 90 },
+		"*-sw": { base: "postsandbeams:block/wood/post/sw", rotateY: 0 },
+		
+		"*-nes": { base: "postsandbeams:block/wood/post/nsw", rotateY: 180 },
+		"*-new": { base: "postsandbeams:block/wood/post/nsw", rotateY: 270 },
+		"*-nsw": { base: "postsandbeams:block/wood/post/nsw", rotateY: 0 },
+		"*-esw": { base: "postsandbeams:block/wood/post/nsw", rotateY: 90 },
+		
+		"*-nesw": { base: "postsandbeams:block/wood/post/nesw", rotateY: 0 }
+	},
+	drawtypeByType: {
+		"*": "JSON"
+	},
+	blockmaterial: "Wood",
+	textures: {
+		"bark-h": { 
+			baseByType: {
+				"*": "game:block/wood/bark/{wood}-h"
+			},
+			overlays: ["game:block/slightlydarker"]
+		},
+		"bark": { 
+			baseByType: {
+				"*": "game:block/wood/bark/{wood}"
+			}
+		},
+		"cut": { 
+			baseByType: {
+				"*": "game:block/wood/debarked/{wood}"
+			}
+		}
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: { 
+		all: false
+	},
+	resistance: 3,
+	lightAbsorption: 0,
+	sounds: {
+		"place": "game:block/planks",
+		"hit": "game:block/planks",
+		"break": "game:block/planks",
+		"walk": "game:walk/wood"
+	},
+	selectionboxbytype: {
+		"*-empty": { x1:0.25, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 0.75 },
+		"*-n": { x1: 0, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2:  0.75, rotateY: 270},
+		"*-e": { x1: 0, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2:  0.75, rotateY: 180},
+		"*-s": { x1: 0, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2:  0.75, rotateY: 90},
+		"*-w": { x1: 0, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2:  0.75},
+		
+		"*-ns": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2:  0.75, rotateY: 90},
+		"*-gns": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2:  0.75, rotateY: 90},
+		"*-ngs": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2:  0.75, rotateY: 90},
+		"*-ew": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2:  0.75},
+		"*-egw": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2:  0.75},
+		"*-gew": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2:  0.75},
+	},
+	selectionboxesbytype: {
+		"*-sw": [ { x1:0.25, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 1 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 0 } ],
+		"*-ne": [ { x1:0.25, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 1, rotateY: 180 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 180 } ] ,
+		"*-nw": [ { x1:0.25, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 1, rotateY: 270 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 270 } ],
+		"*-es": [ { x1:0.25, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 1, rotateY: 90 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 90 } ],
+		
+		"*-nes": [ { x1:0.25, y1: 0, z1: 0, x2: 0.75, y2: 1.0, z2: 1, rotateY: 180 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 180 } ],
+		"*-new": [ { x1:0.25, y1: 0, z1: 0, x2: 0.75, y2: 1.0, z2: 1, rotateY: 270 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 270 } ],
+		"*-nsw": [ { x1:0.25, y1: 0, z1: 0, x2: 0.75, y2: 1.0, z2: 1, rotateY: 0 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 0 } ],
+		"*-esw": [ { x1:0.25, y1: 0, z1: 0, x2: 0.75, y2: 1.0, z2: 1, rotateY: 90 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 90 } ],
+		
+		"*-nesw": [ { x1:0.25, y1: 0, z1: 0, x2: 0.75, y2: 1.0, z2: 1 }, { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2: 0.75 } ]
+	},
+	collisionboxbytype: {
+		"*-empty": { x1:0.25, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 0.75 },
+		"*-n": { x1: 0, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 0.75, rotateY: 270},
+		"*-e": { x1: 0, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 0.75, rotateY: 180},
+		"*-s": { x1: 0, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 0.75, rotateY: 90},
+		"*-w": { x1: 0, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 0.75},
+		
+		"*-ns": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2: 0.75, rotateY: 90},
+		"*-gns": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2: 0.75, rotateY: 90},
+		"*-ngs": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2: 0.75, rotateY: 90},
+		"*-ew": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2: 0.75},
+		"*-egw": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2: 0.75},
+		"*-gew": { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2: 0.75},
+	},
+	collisionboxesbytype: {
+		"*-sw": [ { x1:0.25, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 1 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 0 } ],
+		"*-ne": [ { x1:0.25, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 1, rotateY: 180 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 180 } ] ,
+		"*-nw": [ { x1:0.25, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 1, rotateY: 270 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 270 } ],
+		"*-es": [ { x1:0.25, y1: 0, z1:0.25, x2: 0.75, y2: 1.0, z2: 1, rotateY: 90 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 90 } ],
+		
+		"*-nes": [ { x1:0.25, y1: 0, z1: 0, x2: 0.75, y2: 1.0, z2: 1, rotateY: 180 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 180 } ],
+		"*-new": [ { x1:0.25, y1: 0, z1: 0, x2: 0.75, y2: 1.0, z2: 1, rotateY: 270 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 270 } ],
+		"*-nsw": [ { x1:0.25, y1: 0, z1: 0, x2: 0.75, y2: 1.0, z2: 1, rotateY: 0 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 0 } ],
+		"*-esw": [ { x1:0.25, y1: 0, z1: 0, x2: 0.75, y2: 1.0, z2: 1, rotateY: 90 }, { x1: 0, y1: 0, z1:0.25, x2:0.25, y2: 1.0, z2: 0.75, rotateY: 90 } ],
+		
+		"*-nesw": [ { x1:0.25, y1: 0, z1: 0, x2: 0.75, y2: 1.0, z2: 1 }, { x1: 0, y1: 0, z1:0.25, x2: 1, y2: 1.0, z2: 0.75 } ]
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 20,
+	},
+	materialDensity: 600,
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.5, y: -1, z: -1.2 },
+		rotation: { x: 5, y: -3, z: -96 },
+		scale: 0.37
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0.05, z: 0 },
+		rotation: { x: 90, y: -45, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.07
+	}
+}

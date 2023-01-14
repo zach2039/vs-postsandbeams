@@ -1,0 +1,73 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"bark-h": "block/wood/bark/pine-h",
+		"bark": "block/wood/bark/pine",
+		"cut": "block/wood/debarked/pine"
+	},
+	"elements": [
+		{
+			"name": "pine",
+			"from": [ 4.0, 0.0, 4.0 ], 
+			"to": [ 12.0, 8.0, 12.0 ], 
+			"faces": {
+				"north": { "texture": "#bark", "uv": [ 4.0, 8.0, 12.0, 16.0 ] },
+				"east": { "texture": "#bark", "uv": [ 4.0, 8.0, 12.0, 16.0 ] },
+				"south": { "texture": "#bark", "uv": [ 4.0, 8.0, 12.0, 16.0 ] },
+				"west": { "texture": "#bark", "uv": [ 4.0, 8.0, 12.0, 16.0 ] },
+				"up": { "texture": "#cut", "uv": [ 4.0, 0.0, 12.0, 8.0 ], "windMode": [-1,-1,-1,-1] },
+				"down": { "texture": "#cut", "uv": [ 4.0, 0.0, 12.0, 8.0 ], "windMode": [-1,-1,-1,-1] }
+			}
+		},
+		{
+			"name": "cut",
+			"from": [ 0.0, 8.0, 4.0 ], 
+			"to": [ 13.0, 16.0, 12.0 ], 
+			"rotationOrigin": [ 8.0, 8.0, 8.0 ],
+			"faces": {
+				"north": { "texture": "#bark-h", "uv": [ 0.0, 0.0, 13.0, 8.0 ] },
+				"east": { "texture": "#cut", "uv": [ 0.0, 0.0, 8.0, 8.0 ], "windMode": [-1,-1,-1,-1], "windData": [0,1,1,0] },
+				"south": { "texture": "#bark-h", "uv": [ 0.0, 0.0, 13.0, 8.0 ], "windMode": [-1,-1,-1,-1], "windData": [0,0,1,1] },
+				"west": { "texture": "#cut", "uv": [ 0.0, 0.0, 8.0, 8.0 ], "windMode": [-1,-1,-1,-1], "windData": [0,0,1,1] },
+				"up": { "texture": "#bark-h", "uv": [ 0.0, 4.0, 13.0, 12.0 ], "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] },
+				"down": { "texture": "#bark-h", "uv": [ 0.0, 4.0, 13.0, 12.0 ], "windMode": [-1,-1,-1,-1] }
+			}
+		},
+		{
+			"name": "pine3",
+			"from": [ 0.0, 8.0, 4.0 ], 
+			"to": [ 4.0, 16.0, 12.0 ], 
+			"rotationOrigin": [ 8.0, 8.0, 8.0 ],
+			"rotationY": 90.0,
+			"faces": {
+				"north": { "texture": "#bark-h", "uv": [ 0.0, 0.0, 4.0, 8.0 ] },
+				"east": { "texture": "#cut", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
+				"south": { "texture": "#bark-h", "uv": [ 0.0, 0.0, 4.0, 8.0 ] },
+				"west": { "texture": "#cut", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
+				"up": { "texture": "#bark-h", "uv": [ 0.0, 4.0, 4.0, 12.0 ] },
+				"down": { "texture": "#bark-h", "uv": [ 0.0, 4.0, 4.0, 12.0 ] }
+			}
+		},
+		{
+			"name": "pine4",
+			"from": [ 3.0, 8.0, 4.0 ], 
+			"to": [ 4.0, 16.0, 12.0 ], 
+			"rotationOrigin": [ 8.0, 8.0, 8.0 ],
+			"rotationY": -90.0,
+			"faces": {
+				"north": { "texture": "#bark-h", "uv": [ 0.0, 0.0, 1.0, 8.0 ] },
+				"east": { "texture": "#cut", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
+				"south": { "texture": "#bark-h", "uv": [ 0.0, 0.0, 1.0, 8.0 ] },
+				"west": { "texture": "#cut", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
+				"up": { "texture": "#bark-h", "uv": [ 0.0, 4.0, 1.0, 12.0 ] },
+				"down": { "texture": "#bark-h", "uv": [ 0.0, 4.0, 1.0, 12.0 ] }
+			}
+		}
+	]}
