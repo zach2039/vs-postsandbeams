@@ -8,6 +8,7 @@
 	],
 	variantgroups: [
 		{ code: "wood", states: ["aged"], loadFromProperties: "game:block/wood" },
+		{ code: "bark", states: ["barked", "debarked"] },
 		{ code: "orientation", states: ["ns", "we"] }
 	],
 	attributes: {
@@ -29,7 +30,8 @@
 	textures: {
 		"bark-h": { 
 			baseByType: {
-				"*": "game:block/wood/bark/{wood}-h"
+				"*-barked-*": "game:block/wood/bark/{wood}-h",
+				"*-debarked-*": "game:block/wood/debarked/{wood}",
 			},
 			overlays: ["game:block/slightlydarker"]
 		},

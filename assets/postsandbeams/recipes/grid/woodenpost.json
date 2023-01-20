@@ -9,7 +9,7 @@
 		width: 2,
 		height: 3,
 		recipeGroup: 1,
-		output: { type: "block", code: "postsandbeams:woodenpost-{wood}-ew", quantity: 8  }
+		output: { type: "block", code: "postsandbeams:woodenpost-{wood}-barked-ew", quantity: 8  }
 	},
 	{
 		ingredientPattern: "SK,_L,_L",
@@ -21,16 +21,27 @@
 		width: 2,
 		height: 3,
 		recipeGroup: 1,
-		output: { type: "block", code: "postsandbeams:woodenpost-{wood}-ew", quantity: 8  }
+		output: { type: "block", code: "postsandbeams:woodenpost-{wood}-barked-ew", quantity: 8  }
+	},
+	{
+		ingredientPattern: "KB",
+		ingredients: {
+			"K": { type: "item", code: "game:axe-*", isTool: true  },
+			"B": { type: "block", code: "postsandbeams:woodenpost-*-barked-ew", name: "wood" }
+		},
+		width: 2,
+		height: 1,
+		recipeGroup: 1,
+		output: { type: "block", code: "postsandbeams:woodenpost-{wood}-debarked-ew", quantity: 1  }
 	},
 	{
 		ingredientPattern: "B",
 		ingredients: {
-			"B": { type: "block", code: "postsandbeams:woodenbeam-*-ns", name: "wood" }
+			"B": { type: "block", code: "postsandbeams:woodenbeam-*-ns", name: "woodwithtype" }
 		},
 		width: 1,
 		height: 1,
 		shapeless: true,
-		output: { type: "block", code: "postsandbeams:woodenpost-{wood}-ew", quantity: 1  }
+		output: { type: "block", code: "postsandbeams:woodenpost-{woodwithtype}-ew", quantity: 1  }
 	}
 ]

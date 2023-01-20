@@ -9,6 +9,7 @@
 	},
 	variantgroups: [
 		{ code: "wood", states: ["aged"], loadFromProperties: "game:block/wood" },
+		{ code: "bark", states: [ "barked", "debarked" ] },
 		{ code: "type", states: ["empty", "n", "e", "s", "w", "ne", "ns", "nw", "es", "ew", "sw", "nes", "new", "nsw", "esw", "nesw"] }
 	],
 	creativeinventory: { "general": ["woodenpost-*-ew"], "decorative": ["woodenpost-*-ew"] },	
@@ -41,13 +42,15 @@
 	textures: {
 		"bark-h": { 
 			baseByType: {
-				"*": "game:block/wood/bark/{wood}-h"
+				"*-barked-*": "game:block/wood/bark/{wood}-h",
+				"*-debarked-*": "game:block/wood/debarked/{wood}",
 			},
 			overlays: ["game:block/slightlydarker"]
 		},
 		"bark": { 
 			baseByType: {
-				"*": "game:block/wood/bark/{wood}"
+				"*-barked-*": "game:block/wood/bark/{wood}",
+				"*-debarked-*": "game:block/wood/debarked/{wood}"
 			}
 		},
 		"cut": { 

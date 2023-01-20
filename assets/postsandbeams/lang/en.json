@@ -1,5 +1,5 @@
 {
-	"block-woodenpost-empty": "Wooden post",
+	"block-woodenpost-empty-*": "Wooden post",
     "block-woodenpost-aged-*": "Wooden post (Aged)",
     "block-woodenpost-birch-*": "Wooden post (Birch)",
     "block-woodenpost-oak-*": "Wooden post (Oak)",
@@ -29,7 +29,8 @@
 	"block-woodenpost-beech-*": "Wooden post (Beech)",
 	"block-woodenpost-eucalyptus-*": "Wooden post (Eucalyptus)",
 	"block-woodenpost-cedar-*": "Wooden post (Cedar)",
-	"block-woodenbeam-ns": "Wooden beam",
+	"block-woodenbeam-barked-*": "Wooden beam",
+	"block-woodenbeam-debarked-*": "Wooden beam",
     "block-woodenbeam-aged-*": "Wooden beam (Aged)",
     "block-woodenbeam-birch-*": "Wooden beam (Birch)",
     "block-woodenbeam-oak-*": "Wooden beam (Oak)",
