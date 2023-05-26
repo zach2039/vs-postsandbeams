@@ -5,11 +5,12 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
 namespace PostsAndBeams.ModBlockBehavior
 {
-    public class BlockBehaviorUnstableFallingSupportable : BlockBehaviorUnstableFalling
+    public class BlockBehaviorUnstableFallingSupportable : BlockBehavior
     {
         public BlockBehaviorUnstableFallingSupportable(Block block) : base(block)
         {
@@ -17,12 +18,53 @@ namespace PostsAndBeams.ModBlockBehavior
         }
 
         public override void Initialize(JsonObject properties)
-		{
+        {
             base.Initialize(properties);
 
-            this.fallDownwardChance = properties["fallDownwardChance"].AsFloat(0.1f);
-            this.cascadeFall = properties["cascadeFall"].AsBool(true);
-        }
+            attachableFaces = null;
+
+            if (properties["attachableFaces"].Exists)
+            {
+                string[] faces = properties["attachableFaces"].AsArray<string>();
+                attachableFaces = new BlockFacing[faces.Length];
+
+                for (int i = 0; i < faces.Length; i++)
+                {
+                    attachableFaces[i] = BlockFacing.FromCode(faces[i]);
+                }
+            }
+            
+            var areas = properties["attachmentAreas"].AsObject<Dictionary<string, RotatableCube>>(null);
+            attachmentAreas = new Cuboidi[6];
+            if (areas != null)
+            {
+                foreach (var val in areas)
+                {
+                    val.Value.Origin.Set(8, 8, 8);
+                    BlockFacing face = BlockFacing.FromFirstLetter(val.Key[0]);
+                    attachmentAreas[face.Index] = val.Value.RotatedCopy().ConvertToCuboidi();
+                }
+            } else
+            {
+                attachmentAreas[4] = properties["attachmentArea"].AsObject<Cuboidi>(null);
+            }
+
+            ignorePlaceTest = properties["ignorePlaceTest"].AsBool(false);
+            exceptions = properties["exceptions"].AsObject(new AssetLocation[0], block.Code.Domain);
+            fallSideways = properties["fallSideways"].AsBool(false);
+            dustIntensity = properties["dustIntensity"].AsFloat(0);
+
+            fallSidewaysChance = properties["fallSidewaysChance"].AsFloat(0.3f);
+            string sound = properties["fallSound"].AsString(null);
+            if (sound != null)
+            {
+                fallSound = AssetLocation.Create(sound, block.Code.Domain);
+            }
+
+            impactDamageMul = properties["impactDamageMul"].AsFloat(1f);
+            this.fallDownwardChance = properties["fallDownwardChance"].AsFloat(PostsAndBeamsConfig.Current.unstableFallingSupportableDropChance);
+            this.cascadeFall = properties["cascadeFall"].AsBool(PostsAndBeamsConfig.Current.canUnstableFallingSupportableCascade);
+		}
 
         private bool IsReplacableBeneathAndSideways(IWorldAccessor world, BlockPos pos)
 		{
@@ -53,26 +95,34 @@ namespace PostsAndBeams.ModBlockBehavior
 			{
 				return false;
 			}
-            if (!this.IsReplacableBeneath(world, pos) && world.Rand.NextDouble() >= (double)this.fallDownwardChance)
-			{
-				handling = EnumHandling.PassThrough;
-				return false;
-			}
+
+            //world.Api.Logger.Notification("tryFalling");
 
             // Check for beams 3 blocks away and above, mark as supported and stop falling
             bool supported = false;
-            world.BlockAccessor.SearchBlocks(pos.AddCopy(-3, 0, -3), pos.AddCopy(3, 3, 3), (blk, blkpos) => {
+            world.BlockAccessor.SearchBlocks(pos.AddCopy(-3, -1, -3), pos.AddCopy(3, 3, 3), (blk, blkpos) => {
+                //world.Api.Logger.Notification("checking" + blk.Code);
+                
                 if (blk.FirstCodePart().Contains("woodenbeam"))
                 {
                     supported = true;
-                    return true;
+                    return false;
                 }
 
-                return false;
+                return true;
             });
 
             if (supported)
 			{
+                //world.Api.Logger.Notification("supported");
+				return false;
+			}
+
+            //world.Api.Logger.Notification("unsupported");
+
+            if (world.Rand.NextDouble() >= (double)this.fallDownwardChance)
+			{
+                //world.Api.Logger.Notification(this.IsReplacableBeneath(world, pos).ToString());
 				handling = EnumHandling.PassThrough;
 				return false;
 			}
@@ -86,6 +136,9 @@ namespace PostsAndBeams.ModBlockBehavior
 			{
 				return false;
 			}
+
+            //world.Api.Logger.Notification("tryFallingIgnoreDownwardChanceAndSupports");
+
 			if (!this.fallSideways && this.IsAttached(world.BlockAccessor, pos))
 			{
 				return false;
@@ -113,6 +166,51 @@ namespace PostsAndBeams.ModBlockBehavior
 			handling = EnumHandling.PreventDefault;
 			failureCode = "entityintersecting";
 			return false;
+		}
+
+        public virtual bool IsAttached(IBlockAccessor blockAccessor, BlockPos pos)
+		{
+			BlockPos tmpPos;
+			if (this.attachableFaces == null)
+			{
+				tmpPos = pos.DownCopy(1);
+				return blockAccessor.GetBlock(tmpPos).CanAttachBlockAt(blockAccessor, this.block, tmpPos, BlockFacing.UP, this.attachmentAreas[5]);
+			}
+			tmpPos = new BlockPos();
+			for (int i = 0; i < this.attachableFaces.Length; i++)
+			{
+				BlockFacing face = this.attachableFaces[i];
+				tmpPos.Set(pos).Add(face, 1);
+				if (blockAccessor.GetBlock(tmpPos).CanAttachBlockAt(blockAccessor, this.block, tmpPos, face.Opposite, this.attachmentAreas[face.Index]))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+        public override bool CanPlaceBlock(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling, ref string failureCode)
+		{
+			handling = EnumHandling.PassThrough;
+			if (this.ignorePlaceTest)
+			{
+				return true;
+			}
+			Cuboidi attachmentArea = this.attachmentAreas[4];
+			BlockPos pos = blockSel.Position.DownCopy(1);
+			Block onBlock = world.BlockAccessor.GetBlock(pos);
+			if (blockSel != null && !this.IsAttached(world.BlockAccessor, blockSel.Position) && !onBlock.CanAttachBlockAt(world.BlockAccessor, this.block, pos, BlockFacing.UP, attachmentArea))
+			{
+				JsonObject attributes = this.block.Attributes;
+				if ((attributes == null || !attributes["allowUnstablePlacement"].AsBool(false)) && !this.exceptions.Contains(onBlock.Code))
+				{
+					handling = EnumHandling.PreventSubsequent;
+					failureCode = "requiresolidground";
+					return false;
+				}
+			}
+
+			return this.tryFalling(world, blockSel.Position, ref handling, ref failureCode);
 		}
 
         public override void OnNeighbourBlockChange(IWorldAccessor world, BlockPos pos, BlockPos neibpos, ref EnumHandling handling)
@@ -156,46 +254,22 @@ namespace PostsAndBeams.ModBlockBehavior
 
         private bool cascadeFall = true;
 
-        private Cuboidi[] attachmentAreas {
-            get {
-                var attachmentAreassBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("attachmentAreas", BindingFlags.Instance | BindingFlags.NonPublic);
-                return (Cuboidi[]) attachmentAreassBase.GetValue(this);
-            }
-        }
+        private bool ignorePlaceTest;
 
-        private BlockFacing[] attachableFaces {
-            get {
-                var attachableFacesBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("attachableFaces", BindingFlags.Instance | BindingFlags.NonPublic);
-                return (BlockFacing[]) attachableFacesBase.GetValue(this);
-            }
-        }
+		private AssetLocation[] exceptions;
 
-        private AssetLocation fallSound {
-            get {
-                var fallSoundBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("fallSound", BindingFlags.Instance | BindingFlags.NonPublic);
-                return (AssetLocation) fallSoundBase.GetValue(this);
-            }
-        }
+		public bool fallSideways;
 
-        private float impactDamageMul {
-            get {
-                var impactDamageMulBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("impactDamageMul", BindingFlags.Instance | BindingFlags.NonPublic);
-                return (float) impactDamageMulBase.GetValue(this);
-            }
-        }
+		private float dustIntensity;
 
-        private float dustIntensity {
-            get {
-                var dustIntensityBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("dustIntensity", BindingFlags.Instance | BindingFlags.NonPublic);
-                return (float) dustIntensityBase.GetValue(this);
-            }
-        }
+		private float fallSidewaysChance = 0.3f;
 
-        private float fallSidewaysChance {
-            get {
-                var fallSidewaysChanceBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("fallSidewaysChance", BindingFlags.Instance | BindingFlags.NonPublic);
-                return (float) fallSidewaysChanceBase.GetValue(this);
-            }
-        }
+		private AssetLocation fallSound;
+
+		private float impactDamageMul;
+
+		private Cuboidi[] attachmentAreas;
+
+		private BlockFacing[] attachableFaces;
     }
 }

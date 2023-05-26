@@ -1,9 +1,16 @@
 [ 
 	{ 
         "file": "game:blocktypes/stone/crackedrock", 
-        "op": "replace",
+        "op": "add",
         "path": "/behaviors/-",
-        "value": { "name": "UnstableFallingSupportable" },
-        "condition": { "op": "test", "path": "/postandbeams/patchCrackedRockToApplyUnstableFallingSupportable", "value": "true" }
+        "value": { 
+            "name": "UnstableFallingSupportable", 
+            "properties": {
+                "ignorePlaceTest": true,
+                "fallSideways": false,
+                "fallSound": "game:effect/rockslide", 
+                "dustIntensity": 2
+            }
+        }
     }
 ]

@@ -6,6 +6,14 @@
 			"name":"NWOrientable"
 		},
 		{
+			"name":"CanAttach",
+			"properties":{
+				"sides":[
+					"up"
+				]
+			}
+		},
+		{
 			"name":"BreakIfNotConnectedPost"
 		},
 		{
