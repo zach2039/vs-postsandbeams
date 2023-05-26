@@ -4,9 +4,9 @@
   "name": "Posts and Beams",
   "authors": ["Zach2039"],
   "description": "Adds wood beams and posts.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "dependencies": {
-    "game": "1.7.*"
+    "game": "1.8.5"
   },
   "Side": "Universal",
   "RequiredOnClient": true,
