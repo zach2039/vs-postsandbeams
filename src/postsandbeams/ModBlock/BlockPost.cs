@@ -8,7 +8,7 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.GameContent;
 
-namespace postsandbeams.block
+namespace PostsAndBeams.ModBlock
 {
     public class BlockPost : BlockFence
     {
