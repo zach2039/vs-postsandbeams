@@ -1,0 +1,9 @@
+[ 
+	{ 
+        "file": "game:blocktypes/stone/crackedrock", 
+        "op": "replace",
+        "path": "/behaviors/-",
+        "value": { "name": "UnstableFallingSupportable" },
+        "condition": { "op": "test", "path": "/postandbeams/patchCrackedRockToApplyUnstableFallingSupportable", "value": "true" }
+    }
+]

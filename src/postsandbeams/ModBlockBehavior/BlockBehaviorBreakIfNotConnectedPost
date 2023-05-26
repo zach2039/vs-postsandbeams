@@ -1,0 +1,47 @@
+
+
+using PostsAndBeams.ModBlock;
+using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
+using Vintagestory.GameContent;
+
+namespace PostsAndBeams.ModBlockBehavior
+{
+    public class BlockBehaviorBreakIfNotConnectedPost : BlockBehaviorBreakIfFloating
+    {
+        public BlockBehaviorBreakIfNotConnectedPost(Block block) : base(block)
+        {
+        }
+
+        public override void OnNeighbourBlockChange(IWorldAccessor world, BlockPos pos, BlockPos neibpos, ref EnumHandling handled)
+		{
+			handled = EnumHandling.PassThrough;
+			if (this.IsSurroundedByNonSolid(world, pos))
+			{
+				world.BlockAccessor.BreakBlock(pos, null, 1f);
+			}
+			this.OnNeighbourBlockChange(world, pos, neibpos, ref handled);
+		}
+
+        public new bool IsSurroundedByNonSolid(IWorldAccessor world, BlockPos pos)
+		{
+			foreach (BlockFacing facing in BlockFacing.HORIZONTALS)
+			{
+				if (world.BlockAccessor.GetBlock(pos.Copy().Offset(facing)) is BlockPost)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+        public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref float dropQuantityMultiplier, ref EnumHandling handled)
+		{
+			handled = EnumHandling.PreventSubsequent;
+            return new ItemStack[]
+            {
+                new ItemStack(this.block, 1)
+            };
+		}
+    }
+}

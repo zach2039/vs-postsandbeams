@@ -1,0 +1,201 @@
+using System.Collections.Generic;
+using System.Reflection;
+using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
+using Vintagestory.GameContent;
+
+namespace PostsAndBeams.ModBlockBehavior
+{
+    public class BlockBehaviorUnstableFallingSupportable : BlockBehaviorUnstableFalling
+    {
+        public BlockBehaviorUnstableFallingSupportable(Block block) : base(block)
+        {
+
+        }
+
+        public override void Initialize(JsonObject properties)
+		{
+            base.Initialize(properties);
+
+            this.fallDownwardChance = properties["fallDownwardChance"].AsFloat(0.1f);
+            this.cascadeFall = properties["cascadeFall"].AsBool(true);
+        }
+
+        private bool IsReplacableBeneathAndSideways(IWorldAccessor world, BlockPos pos)
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				BlockFacing facing = BlockFacing.HORIZONTALS[i];
+				Block nBlock = world.BlockAccessor.GetBlockOrNull(pos.X + facing.Normali.X, pos.Y + facing.Normali.Y, pos.Z + facing.Normali.Z, 4);
+				if (nBlock != null && nBlock.Replaceable >= 6000)
+				{
+					nBlock = world.BlockAccessor.GetBlockOrNull(pos.X + facing.Normali.X, pos.Y + facing.Normali.Y - 1, pos.Z + facing.Normali.Z, 4);
+					if (nBlock != null && nBlock.Replaceable >= 6000)
+					{
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+
+		private bool IsReplacableBeneath(IWorldAccessor world, BlockPos pos)
+		{
+			return world.BlockAccessor.GetBlock(pos.X, pos.Y - 1, pos.Z).Replaceable > 6000;
+		}
+
+        private bool tryFalling(IWorldAccessor world, BlockPos pos, ref EnumHandling handling, ref string failureCode)
+		{
+			if (world.Side != EnumAppSide.Server)
+			{
+				return false;
+			}
+            if (!this.IsReplacableBeneath(world, pos) && world.Rand.NextDouble() >= (double)this.fallDownwardChance)
+			{
+				handling = EnumHandling.PassThrough;
+				return false;
+			}
+
+            // Check for beams 3 blocks away and above, mark as supported and stop falling
+            bool supported = false;
+            world.BlockAccessor.SearchBlocks(pos.AddCopy(-3, 0, -3), pos.AddCopy(3, 3, 3), (blk, blkpos) => {
+                if (blk.FirstCodePart().Contains("woodenbeam"))
+                {
+                    supported = true;
+                    return true;
+                }
+
+                return false;
+            });
+
+            if (supported)
+			{
+				handling = EnumHandling.PassThrough;
+				return false;
+			}
+
+            return tryFallingIgnoreDownwardChanceAndSupports(world, pos, ref handling, ref failureCode);
+        }
+
+        private bool tryFallingIgnoreDownwardChanceAndSupports(IWorldAccessor world, BlockPos pos, ref EnumHandling handling, ref string failureCode)
+		{
+			if (world.Side != EnumAppSide.Server)
+			{
+				return false;
+			}
+			if (!this.fallSideways && this.IsAttached(world.BlockAccessor, pos))
+			{
+				return false;
+			}
+			if (!((world as IServerWorldAccessor).Api as ICoreServerAPI).Server.Config.AllowFallingBlocks)
+			{
+				return false;
+			}
+			if (!this.IsReplacableBeneath(world, pos) && (!this.fallSideways || world.Rand.NextDouble() >= (double)this.fallSidewaysChance || !this.IsReplacableBeneathAndSideways(world, pos)))
+			{
+				handling = EnumHandling.PassThrough;
+				return false;
+			}
+			if (world.GetNearestEntity(pos.ToVec3d().Add(0.5, 0.5, 0.5), 1f, 1.5f, delegate(Entity e)
+			{
+				EntityBlockFalling ebf = e as EntityBlockFalling;
+				return ebf != null && ebf.initialPos.Equals(pos);
+			}) == null)
+			{
+				EntityBlockFalling entityblock = new EntityBlockFalling(this.block, world.BlockAccessor.GetBlockEntity(pos), pos, this.fallSound, this.impactDamageMul, true, this.dustIntensity);
+				world.SpawnEntity(entityblock);
+				handling = EnumHandling.PreventSubsequent;
+				return true;
+			}
+			handling = EnumHandling.PreventDefault;
+			failureCode = "entityintersecting";
+			return false;
+		}
+
+        public override void OnNeighbourBlockChange(IWorldAccessor world, BlockPos pos, BlockPos neibpos, ref EnumHandling handling)
+		{
+			base.OnNeighbourBlockChange(world, pos, neibpos, ref handling);
+			if (world.Side == EnumAppSide.Client)
+			{
+				return;
+			}
+			EnumHandling bla = EnumHandling.PassThrough;
+			string bla2 = "";
+			bool didFall = this.tryFalling(world, pos, ref bla, ref bla2);
+
+            if (didFall && this.cascadeFall)
+            {
+                // Be sinister and make other blocks of similar behavior fall above and around
+                BlockPos[] positionsToPoke = new BlockPos[] {
+                    pos.NorthCopy(),
+                    pos.SouthCopy(),
+                    pos.EastCopy(),
+                    pos.WestCopy(),
+                    pos.UpCopy(),
+                };
+
+                foreach (BlockPos posToPoke in positionsToPoke)
+                {
+                    Block block = world.BlockAccessor.GetBlock(posToPoke);
+                    if (block != null)
+                    {   
+                        BlockBehaviorUnstableFallingSupportable blockBehavior = block.GetBehavior<BlockBehaviorUnstableFallingSupportable>() as BlockBehaviorUnstableFallingSupportable;
+                        if (blockBehavior != null)
+                        {
+                            blockBehavior.tryFallingIgnoreDownwardChanceAndSupports(world, posToPoke, ref bla, ref bla2);
+                        }
+                    }
+                }                                
+            }
+		}
+
+        private float fallDownwardChance = 0.1f;
+
+        private bool cascadeFall = true;
+
+        private Cuboidi[] attachmentAreas {
+            get {
+                var attachmentAreassBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("attachmentAreas", BindingFlags.Instance | BindingFlags.NonPublic);
+                return (Cuboidi[]) attachmentAreassBase.GetValue(this);
+            }
+        }
+
+        private BlockFacing[] attachableFaces {
+            get {
+                var attachableFacesBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("attachableFaces", BindingFlags.Instance | BindingFlags.NonPublic);
+                return (BlockFacing[]) attachableFacesBase.GetValue(this);
+            }
+        }
+
+        private AssetLocation fallSound {
+            get {
+                var fallSoundBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("fallSound", BindingFlags.Instance | BindingFlags.NonPublic);
+                return (AssetLocation) fallSoundBase.GetValue(this);
+            }
+        }
+
+        private float impactDamageMul {
+            get {
+                var impactDamageMulBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("impactDamageMul", BindingFlags.Instance | BindingFlags.NonPublic);
+                return (float) impactDamageMulBase.GetValue(this);
+            }
+        }
+
+        private float dustIntensity {
+            get {
+                var dustIntensityBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("dustIntensity", BindingFlags.Instance | BindingFlags.NonPublic);
+                return (float) dustIntensityBase.GetValue(this);
+            }
+        }
+
+        private float fallSidewaysChance {
+            get {
+                var fallSidewaysChanceBase = typeof(BlockBehaviorUnstableFallingSupportable).BaseType.GetField("fallSidewaysChance", BindingFlags.Instance | BindingFlags.NonPublic);
+                return (float) fallSidewaysChanceBase.GetValue(this);
+            }
+        }
+    }
+}
