@@ -1,23 +1,43 @@
 [
 	{
-		ingredientPattern: "P",
-		ingredients: {
-			"P": { type: "block", code: "postsandbeams:woodenpost-*-ew", name: "woodwithtype" }
+		"ingredientPattern":"P",
+		"ingredients":{
+			"P":{
+				"type":"block",
+				"code":"postsandbeams:woodenpost-*-ew",
+				"name":"woodwithtype"
+			}
 		},
-		width: 1,
-		height: 1,
-		shapeless: true,
-		output: { type: "block", code: "postsandbeams:woodenbeam-{woodwithtype}-ns", quantity: 1 }
+		"width":1,
+		"height":1,
+		"shapeless":true,
+		"output":{
+			"type":"block",
+			"code":"postsandbeams:woodenbeam-{woodwithtype}-ns",
+			"quantity":1
+		}
 	},
 	{
-		ingredientPattern: "KB",
-		ingredients: {
-			"K": { type: "item", code: "game:axe-*", isTool: true  },
-			"B": { type: "block", code: "postsandbeams:woodenbeam-*-barked-ns", name: "wood" }
+		"ingredientPattern":"KB",
+		"ingredients":{
+			"K":{
+				"type":"item",
+				"code":"game:axe-*",
+				"isTool":true
+			},
+			"B":{
+				"type":"block",
+				"code":"postsandbeams:woodenbeam-*-barked-ns",
+				"name":"wood"
+			}
 		},
-		width: 2,
-		height: 1,
-		recipeGroup: 1,
-		output: { type: "block", code: "postsandbeams:woodenbeam-{wood}-debarked-ns", quantity: 1  }
+		"width":2,
+		"height":1,
+		"recipeGroup":1,
+		"output":{
+			"type":"block",
+			"code":"postsandbeams:woodenbeam-{wood}-debarked-ns",
+			"quantity":1
+		}
 	}
 ]
