@@ -101,16 +101,6 @@ namespace postsandbeams.blockbehavior
 			return true;
 		}
 
-		public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref float dropQuantityMultiplier, ref EnumHandling handled)
-		{
-			handled = EnumHandling.PreventDefault;
-			Block droppedblock = world.BlockAccessor.GetBlock(this.block.CodeWithVariant("orientation", "we"));
-			return new ItemStack[]
-			{
-				new ItemStack(block, 1)
-			};
-		}
-
 		public override void OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref EnumHandling handling)
 		{
 			handling = EnumHandling.PassThrough;
