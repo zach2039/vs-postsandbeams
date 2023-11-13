@@ -125,10 +125,7 @@ namespace postsandbeams.block
 				"ew",
 				"free"
 			}));
-			return new ItemStack[]
-			{
-				new ItemStack(block, 1)
-			};
+			return new ItemStack(block, 1);
 		}
     }
 }
