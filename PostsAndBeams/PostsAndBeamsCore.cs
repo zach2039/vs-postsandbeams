@@ -17,7 +17,6 @@ namespace postsandbeams
         private IServerNetworkChannel serverChannel;
         private ICoreAPI api;
 
-
         public override void StartPre(ICoreAPI api)
         {
             Instance = this;
@@ -42,21 +41,6 @@ namespace postsandbeams
             }
 
             base.StartPre(api);
-        }
-
-
-        public override void StartClientSide(ICoreClientAPI capi)
-        {
-            base.StartClientSide(capi);
-
-            CApi = capi;
-        }
-
-        public override void StartServerSide(ICoreServerAPI sapi)
-        {
-            base.StartServerSide(sapi);
-
-            SApi = sapi;
         }
 
         public override void Start(ICoreAPI api)
