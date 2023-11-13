@@ -37,7 +37,7 @@ namespace postsandbeams.block
 				}
 				else if (attributes["postConnect"][side.Code].Exists)
 				{
-					return block.Attributes["postConnect"][side.Code].AsBool(false);
+					return block.Attributes["postConnect"][side.Code].AsBool(true);
 				}
 			}
 
