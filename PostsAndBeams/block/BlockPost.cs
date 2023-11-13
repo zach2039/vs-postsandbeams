@@ -102,7 +102,7 @@ namespace postsandbeams.block
 				return;
 			}
 			world.BlockAccessor.SetBlock(block.BlockId, pos);
-			world.BlockAccessor.TriggerNeighbourBlockUpdate(pos);
+			base.OnNeighbourBlockChange(world, pos, neibpos);
 		}		
     }
 }

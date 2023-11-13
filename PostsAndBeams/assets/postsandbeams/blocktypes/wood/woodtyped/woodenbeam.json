@@ -53,7 +53,7 @@
 				"woodenbeam-*"
 			]
 		},
-		"unstableRockStabilization":5
+		"unstableRockStabilization":6
 	},
 	"shapeByType":{
 		"*-ns":{
