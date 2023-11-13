@@ -1,5 +1,5 @@
 {
-	"game:placefailure-nopostpresent": "Cannot place this block here. Requires uninterrupted connect to post",
+	"game:placefailure-nopostpresent": "Cannot place this block here. Requires uninterrupted connection to post",
 	"block-woodenpost-empty-*": "Wooden post",
     "block-woodenpost-aged-*": "Wooden post (Aged)",
     "block-woodenpost-birch-*": "Wooden post (Birch)",

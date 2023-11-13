@@ -114,7 +114,7 @@ namespace postsandbeams.block
 			};
 		}
 
-		public virtual ItemStack OnPickBlock(IWorldAccessor world, BlockPos pos, ref EnumHandling handling)
+		public override ItemStack OnPickBlock(IWorldAccessor world, BlockPos pos)
 		{
 			Block block = world.BlockAccessor.GetBlock(base.CodeWithVariants(new string[]
 			{
