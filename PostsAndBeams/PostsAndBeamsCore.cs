@@ -14,16 +14,36 @@ namespace postsandbeams
 {
     class PostsAndBeamsCore : ModSystem
     {
-        public static PostsAndBeamsCore Instance { get; private set; }
+        private IServerNetworkChannel serverChannel;
+        private ICoreAPI api;
 
-        public ICoreClientAPI CApi { get; private set; }
-        public ICoreServerAPI SApi { get; private set; }
-        public ICoreAPI Api { get; private set; }
 
         public override void StartPre(ICoreAPI api)
         {
             Instance = this;
+
+            string cfgFileName = "PostsAndBeams.json";
+
+            try 
+            {
+                PostsAndBeamsConfig cfgFromDisk;
+                if ((cfgFromDisk = api.LoadModConfig<PostsAndBeamsConfig>(cfgFileName)) == null)
+                {
+                    api.StoreModConfig(PostsAndBeamsConfig.Loaded, cfgFileName);
+                }
+                else
+                {
+                    PostsAndBeamsConfig.Loaded = cfgFromDisk;
+                }
+            } 
+            catch 
+            {
+                api.StoreModConfig(PostsAndBeamsConfig.Loaded, cfgFileName);
+            }
+
+            base.StartPre(api);
         }
+
 
         public override void StartClientSide(ICoreClientAPI capi)
         {
@@ -41,45 +61,51 @@ namespace postsandbeams
 
         public override void Start(ICoreAPI api)
         {
+            this.Api = api;
             base.Start(api);
 
-            Api = api;
+            api.RegisterBlockClass("BlockPost", typeof(BlockPost));
+            api.RegisterBlockBehaviorClass("BreakIfNotConnectedPost", typeof(BlockBehaviorBreakIfNotConnectedPost));
 
-            PostsAndBeamsCore.Instance.Api.RegisterBlockClass("BlockPost", typeof(BlockPost));
-            PostsAndBeamsCore.Instance.Api.RegisterBlockBehaviorClass("BreakIfNotConnectedPost", typeof(BlockBehaviorBreakIfNotConnectedPost));
-
-            try
-            {
-                var Config = PostsAndBeamsCore.Instance.Api.LoadModConfig<PostsAndBeamsConfig>("postsandbeams.json");
-                if (Config != null)
-                {
-                    PostsAndBeamsCore.Instance.Api.Logger.Notification("Mod Config successfully loaded.");
-                    PostsAndBeamsConfig.Current = Config;
-                }
-                else
-                {
-                    PostsAndBeamsCore.Instance.Api.Logger.Warning("No Mod Config specified. Falling back to default settings!");
-                    PostsAndBeamsConfig.Current = PostsAndBeamsConfig.GetDefault();
-                }
-            }
-            catch
-            {
-                PostsAndBeamsConfig.Current = PostsAndBeamsConfig.GetDefault();
-                PostsAndBeamsCore.Instance.Api.Logger.Error("Failed to load custom mod configuration. Falling back to default settings!");
-            }
-            finally
-            {
-                PostsAndBeamsCore.Instance.Api.StoreModConfig(PostsAndBeamsConfig.Current, "postsandbeams.json");
-            }
-
-            PostsAndBeamsCore.Instance.Api.Logger.Notification("Loaded Posts And Beams!");
+            api.Logger.Notification("Loaded Posts And Beams!");
         }
 
+        private void OnPlayerJoin(IServerPlayer player)
+        {
+            // Send connecting players config settings
+            this.serverChannel.SendPacket(
+                new SyncConfigClientPacket {
+                    MaxDistanceBeamFromPostBlocks = PostsAndBeamsConfig.Loaded.MaxDistanceBeamFromPostBlocks
+                }, player);
+        }
+
+        public override void StartServerSide(ICoreServerAPI sapi)
+        {
+            sapi.Event.PlayerJoin += this.OnPlayerJoin; 
+            
+            // Create server channel for config data sync
+            this.serverChannel = sapi.Network.RegisterChannel("postsandbeams")
+                .RegisterMessageType<SyncConfigClientPacket>()
+                .SetMessageHandler<SyncConfigClientPacket>((player, packet) => {});
+        }
+
+        public override void StartClientSide(ICoreClientAPI capi)
+        {
+            // Sync config settings with clients
+            capi.Network.RegisterChannel("postsandbeams")
+                .RegisterMessageType<SyncConfigClientPacket>()
+                .SetMessageHandler<SyncConfigClientPacket>(p => {
+                    this.Mod.Logger.Event("Received config settings from server");
+                    PostsAndBeamsConfig.Loaded.MaxDistanceBeamFromPostBlocks = p.MaxDistanceBeamFromPostBlocks;
+                });
+        }
+        
         public override void Dispose()
         {
-            if (Api == null) return;
-
-            Instance = null;
+            if (this.api is ICoreServerAPI sapi)
+            {
+                sapi.Event.PlayerJoin -= this.OnPlayerJoin;
+            }
         }
     }
 }
