@@ -113,5 +113,22 @@ namespace postsandbeams.block
 				new ItemStack(block, 1)
 			};
 		}
+
+		public virtual ItemStack OnPickBlock(IWorldAccessor world, BlockPos pos, ref EnumHandling handling)
+		{
+			Block block = world.BlockAccessor.GetBlock(base.CodeWithVariants(new string[]
+			{
+				"type",
+				"cover"
+			}, new string[]
+			{
+				"ew",
+				"free"
+			}));
+			return new ItemStack[]
+			{
+				new ItemStack(block, 1)
+			};
+		}
     }
 }
