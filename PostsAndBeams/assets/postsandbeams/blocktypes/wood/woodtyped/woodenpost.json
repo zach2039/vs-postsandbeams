@@ -23,7 +23,8 @@
 			"groupBy":[
 				"woodenpost-*"
 			]
-		}
+		},
+		"unstableRockStabilization":7
 	},
 	"variantgroups":[
 		{

@@ -52,7 +52,8 @@
 			"groupBy":[
 				"woodenbeam-*"
 			]
-		}
+		},
+		"unstableRockStabilization":5
 	},
 	"shapeByType":{
 		"*-ns":{
