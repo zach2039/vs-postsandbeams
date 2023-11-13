@@ -1,6 +1,6 @@
 using ProtoBuf;
 
-namespace beehivekiln.network
+namespace postsandbeams.network
 {
     [ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
     public class SyncConfigClientPacket

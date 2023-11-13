@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
-
-using postsandbeams.block;
-using postsandbeams.blockbehavior;
 using Vintagestory.API.Client;
 using Vintagestory.API.Server;
+using postsandbeams.block;
+using postsandbeams.blockbehavior;
+using postsandbeams.network;
 
 namespace postsandbeams
 {
@@ -19,8 +19,6 @@ namespace postsandbeams
 
         public override void StartPre(ICoreAPI api)
         {
-            Instance = this;
-
             string cfgFileName = "PostsAndBeams.json";
 
             try 
@@ -45,7 +43,7 @@ namespace postsandbeams
 
         public override void Start(ICoreAPI api)
         {
-            this.Api = api;
+            this.api = api;
             base.Start(api);
 
             api.RegisterBlockClass("BlockPost", typeof(BlockPost));
