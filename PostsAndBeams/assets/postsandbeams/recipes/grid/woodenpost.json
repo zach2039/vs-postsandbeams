@@ -24,7 +24,35 @@
 		"output":{
 			"type":"block",
 			"code":"postsandbeams:woodenpost-{wood}-barked-ew",
-			"quantity":8
+			"quantity":4
+		}
+	},
+	{
+		"ingredientPattern":"SK,_L,_L",
+		"ingredients":{
+			"S":{
+				"type":"item",
+				"code":"game:saw-*",
+				"isTool":true
+			},
+			"K":{
+				"type":"item",
+				"code":"game:knife-*",
+				"isTool":true
+			},
+			"L":{
+				"type":"block",
+				"code":"game:debarkedlog-*-ud",
+				"name":"wood"
+			}
+		},
+		"width":2,
+		"height":3,
+		"recipeGroup":1,
+		"output":{
+			"type":"block",
+			"code":"postsandbeams:woodenpost-{wood}-debarked-ew",
+			"quantity":4
 		}
 	},
 	{
@@ -52,30 +80,7 @@
 		"output":{
 			"type":"block",
 			"code":"postsandbeams:woodenpost-{wood}-barked-ew",
-			"quantity":8
-		}
-	},
-	{
-		"ingredientPattern":"KB",
-		"ingredients":{
-			"K":{
-				"type":"item",
-				"code":"game:axe-*",
-				"isTool":true
-			},
-			"B":{
-				"type":"block",
-				"code":"postsandbeams:woodenpost-*-barked-ew",
-				"name":"wood"
-			}
-		},
-		"width":2,
-		"height":1,
-		"recipeGroup":1,
-		"output":{
-			"type":"block",
-			"code":"postsandbeams:woodenpost-{wood}-debarked-ew",
-			"quantity":1
+			"quantity":4
 		}
 	},
 	{
