@@ -104,10 +104,19 @@ namespace postsandbeams.blockbehavior
 		public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref float dropQuantityMultiplier, ref EnumHandling handled)
 		{
 			handled = EnumHandling.PreventSubsequent;
-            return new ItemStack[]
-            {
-                new ItemStack(this.block, 1)
-            };
+			Block block = world.BlockAccessor.GetBlock(base.CodeWithVariants(new string[]
+			{
+				"type",
+				"cover"
+			}, new string[]
+			{
+				"ew",
+				"free"
+			}));
+			return new ItemStack[]
+			{
+				new ItemStack(block, 1)
+			};
 		}
 
 		public override void OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref EnumHandling handling)
