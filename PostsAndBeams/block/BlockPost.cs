@@ -37,11 +37,11 @@ namespace postsandbeams.block
 				}
 				else if (attributes["postConnect"][side.Code].Exists)
 				{
-					return block.Attributes["postConnect"][side.Code].AsBool(true);
+					return block.Attributes["postConnect"][side.Code].AsBool(false);
 				}
 			}
 
-			return true;
+			return false;
 		}
 
 		private string GetPostCode(IWorldAccessor world, BlockPos pos, BlockFacing facing)
@@ -96,5 +96,22 @@ namespace postsandbeams.block
 			world.BlockAccessor.SetBlock(block.BlockId, pos);
 			world.BlockAccessor.TriggerNeighbourBlockUpdate(pos);
 		}	
+
+		public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1f)
+		{
+			Block block = world.BlockAccessor.GetBlock(base.CodeWithVariants(new string[]
+			{
+				"type",
+				"cover"
+			}, new string[]
+			{
+				"ew",
+				"free"
+			}));
+			return new ItemStack[]
+			{
+				new ItemStack(block, 1)
+			};
+		}
     }
 }

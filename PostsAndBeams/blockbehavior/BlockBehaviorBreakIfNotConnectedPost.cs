@@ -34,29 +34,71 @@ namespace postsandbeams.blockbehavior
 			return base.CanPlaceBlock(world, byPlayer, blockSel, ref handling, ref failureCode);
 		}
 
-        public bool IsConnectedAndFacingPost(IWorldAccessor world, BlockPos pos)
+		/// <summary>
+		/// Gets the distance of a post in a given direction
+		/// </summary>
+		/// <param name="world"></param>
+		/// <param name="posBeam"></param>
+		/// <param name="searchDirection"></param>
+		/// <param name="maxDistance"></param>
+		/// <returns>distance from post, starting at 1 if directly adjacent; -1 if not found</returns>
+		private int FindConnectedPostWithinDistanceInDirection(IWorldAccessor world, BlockPos posBeam, BlockFacing searchDirection, int maxDistance)
 		{
-			foreach (BlockFacing facing in BlockFacing.HORIZONTALS)
+			int distance = -1;
+			// Search in the direction until we find a post
+			for (int i = 1; i <= maxDistance; i++)
 			{
-				if (world.BlockAccessor.GetBlock(pos.Copy().Offset(facing)) is BlockPost)
+				Block blockFound = world.BlockAccessor.GetBlock(posBeam.Copy().Add(searchDirection, i));
+
+				if (blockFound == null)
 				{
-					if (this.block.Variant["orientation"][0] == facing.Code[0] || this.block.Variant["orientation"][1] == facing.Code[0])
-					{
-						// Only consider connections if beam is facing post
-						return true;
-					}
+					// Exit early if no block found
+					distance = -1;
+					break;
 				}
 
-				if (world.BlockAccessor.GetBlock(pos.Copy().Offset(facing)).GetBehavior<BlockBehaviorBreakIfNotConnectedPost>() != null)
+				if (blockFound is BlockPost)
 				{
-					if (this.block.Variant["orientation"][0] == facing.Code[0] || this.block.Variant["orientation"][1] == facing.Code[0])
-					{
-						// Allow other beams as well, since they cannot persist if missing a post 
-						return true;
-					}
+					distance = i; 
+					break;
+				}
+				else if (blockFound.GetBehavior<BlockBehaviorBreakIfNotConnectedPost>() == null)
+				{
+					// Exit early if non-beam block separates post and beam
+					distance = -1;
+					break;
 				}
 			}
-			return false;
+
+			// -1 means a post was not in the max allowable distance
+			return distance;
+		}
+
+        public bool IsConnectedAndFacingPost(IWorldAccessor world, BlockPos pos)
+		{
+			// TODO: Make configurable
+			int maxPostDistance = 3;
+
+			// Search for valid post connection in either end directions of beam
+			BlockFacing searchDirA = BlockFacing.FromFirstLetter(this.block.Variant["orientation"][0]);
+			BlockFacing searchDirB = BlockFacing.FromFirstLetter(this.block.Variant["orientation"][1]);
+
+			int distanceA = FindConnectedPostWithinDistanceInDirection(world, pos, searchDirA, maxPostDistance);
+			int distanceB = -1;
+
+			// Try to search in other direction if we didn't find any posts
+			if (distanceA == -1)
+			{
+				distanceB = FindConnectedPostWithinDistanceInDirection(world, pos, searchDirB, maxPostDistance);
+			}
+
+			if (distanceA == -1 && distanceB == -1)
+			{
+				// No post found inline with beam
+				return false;
+			}
+			
+			return true;
 		}
 
 		public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref float dropQuantityMultiplier, ref EnumHandling handled)
@@ -72,7 +114,5 @@ namespace postsandbeams.blockbehavior
 		{
 			handling = EnumHandling.PassThrough;
 		}
-
-       
     }
 }
