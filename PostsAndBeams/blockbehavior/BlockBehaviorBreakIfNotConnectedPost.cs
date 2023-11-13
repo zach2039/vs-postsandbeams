@@ -1,11 +1,11 @@
 
 
-using PostsAndBeams.ModBlock;
+using postsandbeams.block;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 using Vintagestory.GameContent;
 
-namespace PostsAndBeams.ModBlockBehavior
+namespace postsandbeams.blockbehavior
 {
     public class BlockBehaviorBreakIfNotConnectedPost : BlockBehavior
     {

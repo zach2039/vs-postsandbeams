@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
 
-using PostsAndBeams.ModBlock;
-using PostsAndBeams.ModBlockBehavior;
+using postsandbeams.block;
+using postsandbeams.blockbehavior;
 using Vintagestory.API.Client;
 using Vintagestory.API.Server;
 
-namespace PostsAndBeams
+namespace postsandbeams
 {
     class PostsAndBeamsCore : ModSystem
     {
@@ -47,7 +47,6 @@ namespace PostsAndBeams
 
             PostsAndBeamsCore.Instance.Api.RegisterBlockClass("BlockPost", typeof(BlockPost));
             PostsAndBeamsCore.Instance.Api.RegisterBlockBehaviorClass("BreakIfNotConnectedPost", typeof(BlockBehaviorBreakIfNotConnectedPost));
-            PostsAndBeamsCore.Instance.Api.RegisterBlockBehaviorClass("UnstableFallingSupportable", typeof(BlockBehaviorUnstableFallingSupportable));
 
             try
             {
