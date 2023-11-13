@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -10,28 +11,13 @@ using Vintagestory.GameContent;
 
 namespace postsandbeams.block
 {
-    public class BlockPost : BlockFence
+    public class BlockPost : Block
     {
-		public new string GetOrientations(IWorldAccessor world, BlockPos pos)
+		public override void OnJsonTesselation(ref MeshData sourceMesh, ref int[] lightRgbsByCorner, BlockPos pos, Block[] chunkExtBlocks, int extIndex3d)
 		{
-			string orientations = this.GetPostCode(world, pos, BlockFacing.NORTH) + this.GetPostCode(world, pos, BlockFacing.EAST) + this.GetPostCode(world, pos, BlockFacing.SOUTH) + this.GetPostCode(world, pos, BlockFacing.WEST);
-			if (orientations.Length == 0)
-			{
-				orientations = "empty";
-			}
-			return orientations;
 		}
 
-		private string GetPostCode(IWorldAccessor world, BlockPos pos, BlockFacing facing)
-		{
-			if (this.ShouldConnectAt(world, pos, facing))
-			{
-				return facing.Code[0].ToString() ?? "";
-			}
-			return "";
-		}
-
-		public new bool ShouldConnectAt(IWorldAccessor world, BlockPos ownPos, BlockFacing side)
+		public bool ShouldConnectAt(IWorldAccessor world, BlockPos ownPos, BlockFacing side)
 		{
 			Block block = world.BlockAccessor.GetBlock(ownPos.AddCopy(side));
 			JsonObject attributes = block.Attributes;
@@ -55,7 +41,26 @@ namespace postsandbeams.block
 				}
 			}
 
-			return false;
+			return true;
+		}
+
+		private string GetPostCode(IWorldAccessor world, BlockPos pos, BlockFacing facing)
+		{
+			if (this.ShouldConnectAt(world, pos, facing))
+			{
+				return facing.Code[0].ToString() ?? "";
+			}
+			return "";
+		}
+
+		private string GetOrientations(IWorldAccessor world, BlockPos pos)
+		{
+			string orientations = this.GetPostCode(world, pos, BlockFacing.NORTH) + this.GetPostCode(world, pos, BlockFacing.EAST) + this.GetPostCode(world, pos, BlockFacing.SOUTH) + this.GetPostCode(world, pos, BlockFacing.WEST);
+			if (orientations.Length == 0)
+			{
+				orientations = "empty";
+			}
+			return orientations;
 		}
 
 		public override bool TryPlaceBlock(IWorldAccessor world, IPlayer byPlayer, ItemStack itemstack, BlockSelection blockSel, ref string failureCode)
@@ -80,20 +85,7 @@ namespace postsandbeams.block
 			AssetLocation newBlockCode = base.CodeWithVariant("type", orientations);
 			if (this.Code.Equals(newBlockCode))
 			{
-				EnumHandling handled = EnumHandling.PassThrough;
-				BlockBehavior[] blockBehaviors = this.BlockBehaviors;
-				for (int i = 0; i < blockBehaviors.Length; i++)
-				{
-					blockBehaviors[i].OnNeighbourBlockChange(world, pos, neibpos, ref handled);
-					if (handled == EnumHandling.PreventSubsequent)
-					{
-						return;
-					}
-				}
-				if (handled == EnumHandling.PassThrough && (this == this.snowCovered1 || this == this.snowCovered2 || this == this.snowCovered3) && pos.X == neibpos.X && pos.Z == neibpos.Z && pos.Y + 1 == neibpos.Y && world.BlockAccessor.GetBlock(neibpos).Id != 0)
-				{
-					world.BlockAccessor.SetBlock(this.notSnowCovered.Id, pos);
-				}
+				base.OnNeighbourBlockChange(world, pos, neibpos);
 				return;
 			}
 			Block block = world.BlockAccessor.GetBlock(newBlockCode);
@@ -102,7 +94,7 @@ namespace postsandbeams.block
 				return;
 			}
 			world.BlockAccessor.SetBlock(block.BlockId, pos);
-			base.OnNeighbourBlockChange(world, pos, neibpos);
-		}		
+			world.BlockAccessor.TriggerNeighbourBlockUpdate(pos);
+		}	
     }
 }

@@ -1,5 +1,5 @@
 {
-	"placefailure-nopostpresent": "Cannot place this block here. Requires a post to attach to",
+	"game:placefailure-nopostpresent": "Cannot place this block here. Requires a post to attach to",
 	"block-woodenpost-empty-*": "Wooden post",
     "block-woodenpost-aged-*": "Wooden post (Aged)",
     "block-woodenpost-birch-*": "Wooden post (Birch)",
