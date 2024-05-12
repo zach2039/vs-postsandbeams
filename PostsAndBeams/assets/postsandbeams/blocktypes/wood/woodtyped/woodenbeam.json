@@ -3,7 +3,10 @@
 	"class":"Block",
 	"behaviors":[
 		{
-			"name":"NWOrientable"
+			"name":"NWOrientableCustomDrops",
+			"properties":{
+				"drop": { "type": "block", "code": "woodenpost-{wood}-{bark}-ew" }
+			}
 		},
 		{
 			"name":"CanAttach",
@@ -26,7 +29,9 @@
 			"states":[
 				"aged"
 			],
-			"loadFromProperties":"game:block/wood"
+			"loadFromPropertiesCombine": [
+				"game:block/wood"
+			]
 		},
 		{
 			"code":"bark",
@@ -48,11 +53,6 @@
 			"ns":true,
 			"we":true
 		},
-		"handbook":{
-			"groupBy":[
-				"woodenbeam-*"
-			]
-		},
 		"unstableRockStabilization":6
 	},
 	"shapeByType":{
@@ -66,14 +66,6 @@
 		}
 	},
 	"heldTpIdleAnimation":"holdunderarm",
-	"creativeinventory":{
-		"general":[
-			"*-ns"
-		],
-		"decorative":[
-			"*-ns"
-		]
-	},
 	"blockmaterial":"Wood",
 	"textures":{
 		"bark-h":{

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Vintagestory.API.Common;
 using Vintagestory.API.Client;
 using Vintagestory.API.Server;
-using postsandbeams.block;
-using postsandbeams.blockbehavior;
-using postsandbeams.network;
+using PostsAndBeams.ModBlock;
+using PostsAndBeams.ModBlockBehavior;
+using PostsAndBeams.ModNetwork;
 
-namespace postsandbeams
+namespace PostsAndBeams
 {
     class PostsAndBeamsCore : ModSystem
     {
@@ -48,6 +48,7 @@ namespace postsandbeams
 
             api.RegisterBlockClass("BlockPost", typeof(BlockPost));
             api.RegisterBlockBehaviorClass("BreakIfNotConnectedPost", typeof(BlockBehaviorBreakIfNotConnectedPost));
+            api.RegisterBlockBehaviorClass("NWOrientableCustomDrops", typeof(BlockBehaviorNWOrientableCustomDrops));
 
             api.Logger.Notification("Loaded Posts And Beams!");
         }

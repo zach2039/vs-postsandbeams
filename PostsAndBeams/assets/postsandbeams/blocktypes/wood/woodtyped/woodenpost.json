@@ -32,7 +32,9 @@
 			"states":[
 				"aged"
 			],
-			"loadFromProperties":"game:block/wood"
+			"loadFromPropertiesCombine": [
+				"game:block/wood"
+			]
 		},
 		{
 			"code":"bark",
@@ -136,9 +138,7 @@
 			"rotateY":0
 		}
 	},
-	"drawtypeByType":{
-		"*":"JSON"
-	},
+	"drawtype":"JSON",
 	"blockmaterial":"Wood",
 	"textures":{
 		"bark-h":{

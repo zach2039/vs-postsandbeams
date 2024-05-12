@@ -1,6 +1,6 @@
 using ProtoBuf;
 
-namespace postsandbeams.network
+namespace PostsAndBeams.ModNetwork
 {
     [ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
     public class SyncConfigClientPacket

@@ -9,7 +9,7 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.GameContent;
 
-namespace postsandbeams.block
+namespace PostsAndBeams.ModBlock
 {
     public class BlockPost : Block
     {
@@ -71,11 +71,29 @@ namespace postsandbeams.block
 			{
 				block = this;
 			}
+
+			if (blockSel.Face.IsHorizontal)
+			{
+				// Try to place a beam instead, first
+				string beamOrientation = blockSel.Face.IsAxisNS ? "ns" : "we";
+
+				AssetLocation blockBeamAsset = new AssetLocation(base.Code.Domain, String.Concat("woodenbeam", "-", this.Variant["wood"],
+					"-", this.Variant["bark"], "-", beamOrientation));
+				Block blockBeam = world.BlockAccessor.GetBlock(blockBeamAsset);
+
+				bool canPlaceBeam = blockBeam != null && blockBeam.CanPlaceBlock(world, byPlayer, blockSel, ref failureCode);
+				if (canPlaceBeam)
+				{
+					return blockBeam.DoPlaceBlock(world, byPlayer, blockSel, itemstack);
+				}
+			}
+			
+			// Try placing the post next, if beam was unplaceable
 			if (block.CanPlaceBlock(world, byPlayer, blockSel, ref failureCode))
 			{
-				world.BlockAccessor.SetBlock(block.BlockId, blockSel.Position);
-				return true;
+				return block.DoPlaceBlock(world, byPlayer, blockSel, itemstack);
 			}
+
 			return false;
 		}
 
