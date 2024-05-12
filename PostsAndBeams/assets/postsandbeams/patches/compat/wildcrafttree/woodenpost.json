@@ -1,0 +1,55 @@
+[
+    {
+		"dependsOn": [
+			{ "modid": "wildcrafttree" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json",
+		"op": "addmerge",
+		"path": "/variantgroups/0/loadFromPropertiesCombine/-",
+		"value": "wildcrafttree:block/wood"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "wildcrafttree" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json",
+		"op": "addmerge",
+		"path": "/texturesByType",
+		"value": {
+			"@.*-(cedar|spruce|douglasfir|tuja|redcedar|yew|kauri|ginkgo|sycamore|honeylocust|dalbergia|umnini|banyan|elm|beech|bearnut|willow|poplar|guajacum|eucalyptus|ghostgum|ohia|satinash|bluemahoe|sal|mahogany|saxaul|catalpa|jacaranda|empresstree|chlorociboria|petrified)-.*": {
+				"bark-h":{
+					"baseByType":{
+						"*-barked-*":"wildcrafttree:block/wood/bark/{wood}-h",
+						"*-debarked-*":"wildcrafttree:block/wood/planks/{wood}1"
+					},
+					"overlays":[
+						"game:block/slightlydarker"
+					]
+				},
+				"bark":{
+					"baseByType":{
+						"*-barked-*":"wildcrafttree:block/wood/bark/{wood}",
+						"*-debarked-*":"wildcrafttree:block/wood/planks/{wood}1"
+					}
+				},
+				"cut":{
+					"baseByType":{
+						"*":"wildcrafttree:block/wood/planks/{wood}1"
+					}
+				}
+			}
+		}
+	},
+	{
+		"op": "move",
+		"frompath": "/texturesByType/*",
+		"path": "/texturesByType/temp-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json"
+	},
+	{
+		"op": "move",
+		"frompath": "/texturesByType/temp-*",
+		"path": "/texturesByType/*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json"
+	}
+]

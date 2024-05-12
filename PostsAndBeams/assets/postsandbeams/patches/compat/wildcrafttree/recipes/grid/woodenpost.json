@@ -1,0 +1,110 @@
+[
+    {
+		"dependsOn": [
+			{ "modid": "wildcrafttree" }
+		],
+		"file": "postsandbeams:recipes/grid/woodenpost.json",
+		"op": "addmerge",
+		"path": "/-",
+		"value": {
+            "ingredientPattern":"SK,_L,_L",
+            "ingredients":{
+                "S":{
+                    "type":"item",
+                    "code":"game:saw-*",
+                    "isTool":true
+                },
+                "K":{
+                    "type":"item",
+                    "code":"game:knife-*",
+                    "isTool":true
+                },
+                "L":{
+                    "type":"block",
+                    "code":"wildcrafttree:log-placed-*-ud",
+                    "name":"wood"
+                }
+            },
+            "width":2,
+            "height":3,
+            "recipeGroup":1,
+            "output":{
+                "type":"block",
+                "code":"postsandbeams:woodenpost-{wood}-barked-ew",
+                "quantity":4
+            }
+        }
+	},
+    {
+		"dependsOn": [
+			{ "modid": "wildcrafttree" }
+		],
+		"file": "postsandbeams:recipes/grid/woodenpost.json",
+		"op": "addmerge",
+		"path": "/-",
+		"value":{
+            "ingredientPattern":"SK,_L,_L",
+            "ingredients":{
+                "S":{
+                    "type":"item",
+                    "code":"game:saw-*",
+                    "isTool":true
+                },
+                "K":{
+                    "type":"item",
+                    "code":"game:knife-*",
+                    "isTool":true
+                },
+                "L":{
+                    "type":"block",
+                    "code":"wildcrafttree:debarkedlog-*-ud",
+                    "name":"wood"
+                }
+            },
+            "width":2,
+            "height":3,
+            "recipeGroup":1,
+            "output":{
+                "type":"block",
+                "code":"postsandbeams:woodenpost-{wood}-debarked-ew",
+                "quantity":4
+            }
+        }
+	},
+    {
+		"dependsOn": [
+			{ "modid": "wildcrafttree" }
+		],
+		"file": "postsandbeams:recipes/grid/woodenpost.json",
+		"op": "addmerge",
+		"path": "/-",
+		"value":{
+            "ingredientPattern":"SK,_L,_L",
+            "ingredients":{
+                "S":{
+                    "type":"item",
+                    "code":"game:saw-*",
+                    "isTool":true
+                },
+                "K":{
+                    "type":"item",
+                    "code":"game:knife-*",
+                    "isTool":true
+                },
+                "L":{
+                    "type":"block",
+                    "code":"wildcrafttree:logsection-placed-*-ne-ud",
+                    "name":"wood"
+                }
+            },
+            "width":2,
+            "height":3,
+            "recipeGroup":1,
+            "output":{
+                "type":"block",
+                "code":"postsandbeams:woodenpost-{wood}-barked-ew",
+                "quantity":4
+            }
+        }
+	}
+]

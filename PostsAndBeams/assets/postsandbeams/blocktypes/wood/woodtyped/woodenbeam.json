@@ -67,19 +67,21 @@
 	},
 	"heldTpIdleAnimation":"holdunderarm",
 	"blockmaterial":"Wood",
-	"textures":{
-		"bark-h":{
-			"baseByType":{
-				"*-barked-*":"game:block/wood/bark/{wood}-h",
-				"*-debarked-*":"game:block/wood/debarked/{wood}"
+	"texturesByType":{
+		"*": {
+			"bark-h":{
+				"baseByType":{
+					"*-barked-*":"game:block/wood/bark/{wood}-h",
+					"*-debarked-*":"game:block/wood/debarked/{wood}"
+				},
+				"overlays":[
+					"game:block/slightlydarker"
+				]
 			},
-			"overlays":[
-				"game:block/slightlydarker"
-			]
-		},
-		"cut":{
-			"baseByType":{
-				"*":"game:block/wood/debarked/{wood}"
+			"cut":{
+				"baseByType":{
+					"*":"game:block/wood/debarked/{wood}"
+				}
 			}
 		}
 	},

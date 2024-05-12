@@ -40,7 +40,7 @@ namespace PostsAndBeams.ModBlockBehavior
 		/// <param name="searchDirection"></param>
 		/// <param name="maxDistance"></param>
 		/// <returns>distance from post, starting at 1 if directly adjacent; -1 if not found</returns>
-		private int FindConnectedPostWithinDistanceInDirection(IWorldAccessor world, BlockPos posBeam, BlockFacing searchDirection, int maxDistance)
+		public int FindConnectedPostWithinDistanceInDirection(IWorldAccessor world, BlockPos posBeam, BlockFacing searchDirection, int maxDistance, bool ignoreAir = false)
 		{
 			int distance = -1;
 			// Search in the direction until we find a post
@@ -48,7 +48,7 @@ namespace PostsAndBeams.ModBlockBehavior
 			{
 				Block blockFound = world.BlockAccessor.GetBlock(posBeam.Copy().Add(searchDirection, i));
 
-				if (blockFound == null)
+				if (blockFound == null && !ignoreAir)
 				{
 					// Exit early if no block found
 					distance = -1;
@@ -60,7 +60,7 @@ namespace PostsAndBeams.ModBlockBehavior
 					distance = i; 
 					break;
 				}
-				else if (blockFound.GetBehavior<BlockBehaviorBreakIfNotConnectedPost>() == null)
+				else if (blockFound.GetBehavior<BlockBehaviorBreakIfNotConnectedPost>() == null && (blockFound != null && !ignoreAir))
 				{
 					// Exit early if non-beam block separates post and beam
 					distance = -1;
@@ -74,8 +74,7 @@ namespace PostsAndBeams.ModBlockBehavior
 
         public bool IsConnectedAndFacingPost(IWorldAccessor world, BlockPos pos)
 		{
-			// TODO: Make configurable
-			int maxPostDistance = 3;
+			int maxPostDistance = PostsAndBeamsConfig.Loaded.MaxDistanceBeamFromPostBlocks;
 
 			// Search for valid post connection in either end directions of beam
 			BlockFacing searchDirA = BlockFacing.FromFirstLetter(this.block.Variant["orientation"][0]);

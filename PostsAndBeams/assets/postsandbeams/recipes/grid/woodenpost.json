@@ -82,23 +82,5 @@
 			"code":"postsandbeams:woodenpost-{wood}-barked-ew",
 			"quantity":4
 		}
-	},
-	{
-		"ingredientPattern":"B",
-		"ingredients":{
-			"B":{
-				"type":"block",
-				"code":"postsandbeams:woodenbeam-*-ns",
-				"name":"woodwithtype"
-			}
-		},
-		"width":1,
-		"height":1,
-		"shapeless":true,
-		"output":{
-			"type":"block",
-			"code":"postsandbeams:woodenpost-{woodwithtype}-ew",
-			"quantity":1
-		}
 	}
 ]
