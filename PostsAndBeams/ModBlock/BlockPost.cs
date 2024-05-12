@@ -91,8 +91,14 @@ namespace PostsAndBeams.ModBlock
 					bool successfulPostPlacement = blockBeam.DoPlaceBlock(world, byPlayer, blockSel, itemstack);
 
 					BlockBehaviorBreakIfNotConnectedPost breakIfNotConnectedPost = blockBeam.GetBehavior<BlockBehaviorBreakIfNotConnectedPost>();
-					if (successfulPostPlacement && breakIfNotConnectedPost != null && !byPlayer.Entity.Controls.ShiftKey) // only allow autoplace if shift is not held
+					if (successfulPostPlacement) 
 					{
+						if (byPlayer.Entity.Controls.ShiftKey) // only allow autoplace if shift is not held
+							return true;
+
+						if (breakIfNotConnectedPost == null)
+							return true;
+
 						// Try to stack beams auto-magically up to max distance away if there is a post within distance
 						BlockSelection blockSelectionTowards = blockSel.Clone();
 						blockSelectionTowards.Position = blockSelectionTowards.Position.Offset(blockSel.Face);
@@ -135,8 +141,11 @@ namespace PostsAndBeams.ModBlock
 			{
 				bool successfulPostPlacement = block.DoPlaceBlock(world, byPlayer, blockSel, itemstack);
 
-				if (successfulPostPlacement && !byPlayer.Entity.Controls.ShiftKey) // only allow autoplace if shift is not held
+				if (successfulPostPlacement) 
 				{
+					if (byPlayer.Entity.Controls.ShiftKey) // only allow autoplace if shift is not held
+						return true;
+
 					// Try to stack posts auto-magically up to three tall if we succesfully placed the first of the three
 					BlockSelection blockSelectionUp = blockSel.Clone();
 					for (int i = 0; i < 2; i++)
