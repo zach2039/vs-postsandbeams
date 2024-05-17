@@ -21,7 +21,7 @@
 	"attributes":{
 		"handbook":{
 			"groupBy":[
-				"woodenpost-*"
+				"woodenpost-{wood}-*"
 			]
 		},
 		"unstableRockStabilization":8
@@ -67,10 +67,7 @@
 	],
 	"creativeinventory":{
 		"general":[
-			"woodenpost-*-ew"
-		],
-		"decorative":[
-			"woodenpost-*-ew"
+			"*-ew"
 		]
 	},
 	"shapebytype":{

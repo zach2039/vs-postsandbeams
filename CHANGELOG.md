@@ -1,3 +1,9 @@
+### v1.19.x-1.3.2
+
+ - Change plank textures for wildcraft tree beams to debarked textures
+ - Added a decor beam, which does not support blocks but can be placed anywhere
+ - Fix lightAbsorption not being 0 on beams and decor beams
+
 ### v1.19.x-1.3.1
 
  - Fix incorrect logic with shift placement

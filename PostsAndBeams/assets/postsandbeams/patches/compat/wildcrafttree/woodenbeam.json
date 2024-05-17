@@ -20,7 +20,7 @@
 				"bark-h":{
                     "baseByType":{
                         "*-barked-*":"wildcrafttree:block/wood/bark/{wood}-h",
-                        "*-debarked-*":"wildcrafttree:block/wood/planks/{wood}1"
+                        "*-debarked-*":"game:block/wood/debarked/{wood}"
                     },
                     "overlays":[
                         "game:block/slightlydarker"
@@ -28,7 +28,7 @@
                 },
                 "cut":{
                     "baseByType":{
-                        "*":"wildcrafttree:block/wood/planks/{wood}1"
+                        "*":"game:block/wood/debarked/{wood}"
                     }
                 }
 			}

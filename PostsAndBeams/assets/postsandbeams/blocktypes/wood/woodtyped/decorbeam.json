@@ -1,35 +1,28 @@
 {
-	"code":"woodenbeam",
-	"class":"Block",
+	"code":"decorbeam",
+    "class":"Block",
 	"behaviors":[
 		{
 			"name":"NWOrientableCustomDrops",
 			"properties":{
-				"drop": { "type": "block", "code": "woodenpost-{wood}-{bark}-ew" }
+				"drop": { "type": "block", "code": "decorbeam-{wood}-{bark}-we" }
 			}
-		},
-		{
-			"name":"CanAttach",
-			"properties":{
-				"sides":[
-					"up"
-				]
-			}
-		},
-		{
-			"name":"BreakIfNotConnectedPost"
-		},
-		{
-			"name":"RopeTieable"
 		}
 	],
+	"attributes":{
+		"handbook":{
+			"groupBy":[
+				"decorbeam-{wood}-*"
+			]
+		}
+	},
 	"variantgroups":[
 		{
 			"code":"wood",
 			"states":[
 				"aged"
 			],
-			"loadFromPropertiesCombine": [
+			"loadFromPropertiesCombine":[
 				"game:block/wood"
 			]
 		},
@@ -48,12 +41,13 @@
 			]
 		}
 	],
-	"attributes":{
-		"postConnect":{
-			"ns":true,
-			"we":true
-		},
-		"unstableRockStabilization":6
+	"creativeinventory":{
+		"general":[
+			"*-we"
+		],
+		"decorative":[
+			"*-we"
+		]
 	},
 	"shapeByType":{
 		"*-ns":{
@@ -68,7 +62,7 @@
 	"heldTpIdleAnimation":"holdunderarm",
 	"blockmaterial":"Wood",
 	"texturesByType":{
-		"*": {
+		"*":{
 			"bark-h":{
 				"baseByType":{
 					"*-barked-*":"game:block/wood/bark/{wood}-h",
