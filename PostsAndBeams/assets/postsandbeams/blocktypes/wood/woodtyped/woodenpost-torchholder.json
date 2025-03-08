@@ -1,0 +1,552 @@
+{
+	"code": "woodenposttorchholder",
+	"class": "BlockTorchHolderOrientable",
+	"entityClass": "TorchHolder",
+	"behaviors": [
+		{
+			"name": "HorizontalOrientableHandleDrops",
+			"properties": {
+				"handleDrops": false
+			}
+		},
+		{
+			"name": "CanAttach",
+			"properties": {
+				"sides": [
+					"up",
+					"down"
+				]
+			}
+		},
+		{
+			"name": "Unstable"
+		},
+		{
+			"name": "RopeTieable"
+		},
+		{ "name": "Lockable" }
+	],
+	"attributes": {
+		"handbook": {
+			"groupBy": [
+				"woodenposttorchholder-{wood}-*"
+			]
+		},
+		"unstableRockStabilization": 8,
+		"attributes": {
+			"reinforcable": true
+		}
+	},
+	"variantgroups": [
+		{
+			"code": "wood",
+			"states": [
+				"aged"
+			],
+			"loadFromPropertiesCombine": [
+				"game:block/wood"
+			]
+		},
+		{
+			"code": "bark",
+			"states": [
+				"barked",
+				"debarked"
+			]
+		},
+		{
+			"code": "material",
+			"states": [ "brass", "aged" ]
+		},
+		{
+			"code": "state",
+			"states": [ "empty", "filled" ]
+		},
+		{
+			"code": "side",
+			"loadFromProperties": "abstract/horizontalorientation"
+		}
+	],
+	"creativeinventory": {
+		"general": [ "*-empty-north" ],
+		"decorative": [ "*-empty-north" ]
+	},
+	"shapebytype": {
+		"*-north": {
+			"base": "postsandbeams:block/wood/post/torchholder-{state}-w",
+			"rotateY": 270
+		},
+		"*-east": {
+			"base": "postsandbeams:block/wood/post/torchholder-{state}-w",
+			"rotateY": 180
+		},
+		"*-south": {
+			"base": "postsandbeams:block/wood/post/torchholder-{state}-w",
+			"rotateY": 90
+		},
+		"*-west": {
+			"base": "postsandbeams:block/wood/post/torchholder-{state}-w",
+			"rotateY": 0
+		}
+	},
+	"drawtype": "JSON",
+	"blockmaterial": "Wood",
+	"texturesByType": {
+		"*-barked-*": {
+			"bark": {
+				"base": "game:block/wood/bark/{wood}"
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			},
+			"material": { "base": "game:block/metal/torchholder/{material}" }
+		},
+		"*-debarked-*": {
+			"bark": {
+				"base": "game:block/wood/debarked/{wood}",
+				"rotation": 90
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			},
+			"material": { "base": "game:block/metal/torchholder/{material}" }
+		}
+	},
+	"dropsByType": {
+		"*-empty-*": [
+			{ "code": "game:torchholder-{material}-empty-north" },
+			{ "code": "postsandbeams:woodenpost-{wood}-{bark}-ew" }
+		],
+		"*-filled-*": [
+			{ "code": "game:torchholder-{material}-empty-north" },
+			{ "code": "game:torch-basic-lit-up" },
+			{ "code": "postsandbeams:woodenpost-{wood}-{bark}-ew" }
+		]
+	},
+	"particlePropertiesByType": {
+		"*-filled-*": [
+			{
+				"__comment": "Ember cubicles",
+				"hsvaColor": [
+					{
+						"avg": 20,
+						"var": 20
+					},
+					{
+						"avg": 255,
+						"var": 50
+					},
+					{
+						"avg": 255,
+						"var": 50
+					},
+					{
+						"avg": 255,
+						"var": 0
+					}
+				],
+				"gravityEffect": {
+					"dist": "invexp",
+					"avg": -0.07,
+					"var": 0.4
+				},
+				"posOffsetByType": {
+					"*-filled-north": [
+						{
+							"avg": 0,
+							"var": 0.1
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": -0.40,
+							"var": 0.1
+						}
+					],
+					"*-filled-east": [
+						{
+							"avg": 0.40,
+							"var": 0.1
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": 0,
+							"var": 0.1
+						}
+					],
+					"*-filled-south": [
+						{
+							"avg": 0,
+							"var": 0.1
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": 0.40,
+							"var": 0.1
+						}
+					],
+					"*-filled-west": [
+						{
+							"avg": -0.40,
+							"var": 0.1
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": 0,
+							"var": 0.1
+						}
+					]
+				},
+				"velocity": [
+					{
+						"avg": 0,
+						"var": 0.15
+					},
+					{
+						"avg": 0.5,
+						"var": 0.1
+					},
+					{
+						"avg": 0,
+						"var": 0.15
+					}
+				],
+				"quantity": { "avg": 0.015 },
+				"size": {
+					"avg": 0.4,
+					"var": 0
+				},
+				"sizeEvolve": {
+					"transform": "quadratic",
+					"factor": -0.7
+				},
+				"lifeLength": { "avg": 1.5 },
+				"vertexFlags": 128,
+				"windAffectednes": 0.2
+			},
+			{
+				"__comment": "Smoke quads",
+				"hsvaColor": [
+					{
+						"avg": 0,
+						"var": 0
+					},
+					{
+						"avg": 0,
+						"var": 0
+					},
+					{
+						"avg": 40,
+						"var": 30
+					},
+					{
+						"avg": 220,
+						"var": 50
+					}
+				],
+				"opacityEvolve": {
+					"transform": "quadratic",
+					"factor": -16
+				},
+				"gravityEffect": {
+					"avg": 0,
+					"var": 0
+				},
+				"posOffsetByType": {
+					"*-filled-north": [
+						{
+							"avg": 0,
+							"var": 0.1
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": -0.40,
+							"var": 0.1
+						}
+					],
+					"*-filled-east": [
+						{
+							"avg": 0.40,
+							"var": 0.1
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": 0,
+							"var": 0.1
+						}
+					],
+					"*-filled-south": [
+						{
+							"avg": 0,
+							"var": 0.1
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": 0.40,
+							"var": 0.1
+						}
+					],
+					"*-filled-west": [
+						{
+							"avg": -0.40,
+							"var": 0.1
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": 0,
+							"var": 0.1
+						}
+					]
+				},
+				"velocity": [
+					{
+						"avg": 0,
+						"var": 0.025
+					},
+					{
+						"avg": 0.15,
+						"var": 0.1
+					},
+					{
+						"avg": 0,
+						"var": 0.025
+					}
+				],
+				"quantity": { "avg": 0.05 },
+				"size": {
+					"avg": 0.25,
+					"var": 0.05
+				},
+				"sizeEvolve": {
+					"transform": "linear",
+					"factor": 0.5
+				},
+				"particleModel": "Quad",
+				"windAffectednes": 0.7
+			},
+			{
+				"__comment": "Fire quads",
+				"hsvaColor": [
+					{
+						"avg": 20,
+						"var": 20
+					},
+					{
+						"avg": 255,
+						"var": 50
+					},
+					{
+						"avg": 255,
+						"var": 50
+					},
+					{
+						"avg": 255,
+						"var": 0
+					}
+				],
+				"opacityEvolve": {
+					"transform": "quadratic",
+					"factor": -16
+				},
+				"gravityEffect": {
+					"avg": 0,
+					"var": 0
+				},
+				"posOffsetByType": {
+					"*-filled-north": [
+						{
+							"avg": 0,
+							"var": 0.12
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": -0.40,
+							"var": 0.12
+						}
+					],
+					"*-filled-east": [
+						{
+							"avg": 0.40,
+							"var": 0.12
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": 0,
+							"var": 0.12
+						}
+					],
+					"*-filled-south": [
+						{
+							"avg": 0,
+							"var": 0.12
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": 0.40,
+							"var": 0.12
+						}
+					],
+					"*-filled-west": [
+						{
+							"avg": -0.40,
+							"var": 0.12
+						},
+						{
+							"avg": -0.23,
+							"var": 0
+						},
+						{
+							"avg": 0,
+							"var": 0.12
+						}
+					]
+				},
+				"velocity": [
+					{
+						"avg": 0,
+						"var": 0.025
+					},
+					{
+						"avg": 0.18,
+						"var": 0.07
+					},
+					{
+						"avg": 0,
+						"var": 0.025
+					}
+				],
+				"quantity": { "avg": 1 },
+				"size": {
+					"avg": 0.25,
+					"var": 0.05
+				},
+				"lifeLength": { "avg": 0.25 },
+				"sizeEvolve": {
+					"transform": "linear",
+					"factor": 0.25
+				},
+				"particleModel": "Quad",
+				"vertexFlags": 128,
+				"windAffectednes": 0.5
+			}
+		]
+	},
+	"sidesolid": {
+		"all": false
+	},
+	"sideopaque": {
+		"all": false
+	},
+	"resistance": 3,
+	"lightAbsorption": 0,
+	"lightHsvByType": { "*-filled-*": [ 4, 4, 14 ] },
+	"rainPermeable": true,
+	"sounds": {
+		"place": "game:block/planks",
+		"hit": "game:block/planks",
+		"break": "game:block/planks",
+		"walk": "game:walk/wood"
+	},
+	"selectionBoxes": [
+		{
+			"x1": 0.25,
+			"y1": 0,
+			"z1": 0.25,
+			"x2": 0.75,
+			"y2": 1.0,
+			"z2": 0.75
+		},
+		{
+			"x1": 0.3125,
+			"y1": 0.125,
+			"z1": 0.5625,
+			"x2": 0.6875,
+			"y2": 0.875,
+			"z2": 1,
+			"rotateYByType": {
+				"*-east": 90,
+				"*-south": 0,
+				"*-west": 270,
+				"*-north": 180
+			}
+		}
+	],
+	"collisionBox": {
+		"x1": 0.25,
+		"y1": 0,
+		"z1": 0.25,
+		"x2": 0.75,
+		"y2": 1.0,
+		"z2": 0.75
+	},
+	"combustibleProps": {
+		"burnTemperature": 600,
+		"burnDuration": 20
+	},
+	"materialDensity": 600,
+	"heldTpIdleAnimation": "holdbothhandslarge",
+	"heldTpUseAnimation": "twohandplaceblock",
+	"tpHandTransform": {
+		"translation": {
+			"x": -1.5,
+			"y": -1,
+			"z": -1.2
+		},
+		"rotation": {
+			"x": 5,
+			"y": -3,
+			"z": -96
+		},
+		"scale": 0.37
+	},
+	"groundTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0.05,
+			"z": 0
+		},
+		"rotation": {
+			"x": 90,
+			"y": -45,
+			"z": 0
+		},
+		"origin": {
+			"x": 0.5,
+			"y": 0,
+			"z": 0.5
+		},
+		"scale": 2.07
+	}
+}

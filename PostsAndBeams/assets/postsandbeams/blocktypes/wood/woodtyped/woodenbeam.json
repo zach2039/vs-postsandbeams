@@ -1,26 +1,29 @@
 {
 	"code":"woodenbeam",
 	"class":"Block",
-	"behaviors":[
+	"behaviors": [
 		{
-			"name":"NWOrientableCustomDrops",
-			"properties":{
-				"drop": { "type": "block", "code": "woodenpost-{wood}-{bark}-ew" }
+			"name": "NWOrientableCustomDrops",
+			"properties": {
+				"drop": {
+					"type": "block",
+					"code": "woodenpost-{wood}-{bark}-ew"
+				}
 			}
 		},
 		{
-			"name":"CanAttach",
-			"properties":{
-				"sides":[
+			"name": "CanAttach",
+			"properties": {
+				"sides": [
 					"up"
 				]
 			}
 		},
 		{
-			"name":"BreakIfNotConnectedPost"
+			"name": "BreakIfNotConnectedPost"
 		},
 		{
-			"name":"RopeTieable"
+			"name": "RopeTieable"
 		}
 	],
 	"variantgroups":[
@@ -67,21 +70,34 @@
 	},
 	"heldTpIdleAnimation":"holdunderarm",
 	"blockmaterial":"Wood",
-	"texturesByType":{
-		"*": {
-			"bark-h":{
-				"baseByType":{
-					"*-barked-*":"game:block/wood/bark/{wood}-h",
-					"*-debarked-*":"game:block/wood/debarked/{wood}"
-				},
-				"overlays":[
+	"texturesByType": {
+		"*-barked-*": {
+			"bark-h": {
+				"base": "game:block/wood/bark/{wood}-h",
+				"overlays": [
 					"game:block/slightlydarker"
 				]
 			},
-			"cut":{
-				"baseByType":{
-					"*":"game:block/wood/debarked/{wood}"
-				}
+			"bark": {
+				"base": "game:block/wood/bark/{wood}"
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			}
+		},
+		"*-debarked-*": {
+			"bark-h": {
+				"base": "game:block/wood/debarked/{wood}",
+				"overlays": [
+					"game:block/slightlydarker"
+				]
+			},
+			"bark": {
+				"base": "game:block/wood/debarked/{wood}",
+				"rotation": 90
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
 			}
 		}
 	},

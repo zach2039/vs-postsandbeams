@@ -61,7 +61,7 @@
 		"ingredients":{
 			"B":{
 				"type":"block",
-				"code":"postsandbeams:decorbeam-{wood}-debarked-we",
+				"code":"postsandbeams:decorbeam-*-debarked-we",
 				"name":"wood",
 				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten"]
 			}

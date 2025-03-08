@@ -1,49 +1,80 @@
 [
-    {
-		"dependsOn": [
-			{ "modid": "wildcrafttree" }
-		],
-		"file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json",
-		"op": "addmerge",
-		"path": "/variantgroups/0/loadFromPropertiesCombine/-",
-		"value": "wildcrafttree:block/wood"
-	},
-    {
-		"dependsOn": [
-			{ "modid": "wildcrafttree" }
-		],
-		"file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json",
-		"op": "addmerge",
-		"path": "/texturesByType",
-		"value": {
-			"@.*-(cedar|spruce|douglasfir|tuja|redcedar|yew|kauri|ginkgo|sycamore|honeylocust|dalbergia|umnini|banyan|elm|beech|bearnut|willow|poplar|guajacum|eucalyptus|ghostgum|ohia|satinash|bluemahoe|sal|mahogany|saxaul|catalpa|jacaranda|empresstree|chlorociboria|petrified)-.*": {
-				"bark-h":{
-                    "baseByType":{
-                        "*-barked-*":"wildcrafttree:block/wood/bark/{wood}-h",
-                        "*-debarked-*":"game:block/wood/debarked/{wood}"
-                    },
-                    "overlays":[
-                        "game:block/slightlydarker"
-                    ]
-                },
-                "cut":{
-                    "baseByType":{
-                        "*":"game:block/wood/debarked/{wood}"
-                    }
-                }
-			}
-		}
-	},
-    {
-		"op": "move",
-		"frompath": "/texturesByType/*",
-		"path": "/texturesByType/temp-*",
-		"file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json"
-	},
-	{
-		"op": "move",
-		"frompath": "/texturesByType/temp-*",
-		"path": "/texturesByType/*",
-		"file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json"
-	}
+  {
+    "dependsOn": [
+      { "modid": "wildcrafttree" }
+    ],
+    "file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json",
+    "op": "addmerge",
+    "path": "/variantgroups/0/loadFromPropertiesCombine/-",
+    "value": "wildcrafttree:block/wood"
+  },
+  {
+    "dependsOn": [
+      { "modid": "wildcrafttree" }
+    ],
+    "file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json",
+    "op": "addmerge",
+    "path": "/texturesByType/@.*-(cedar|fir|spruce|douglasfir|tuja|redcedar|yew|kauri|ginkgo|sycamore|honeylocust|dalbergia|umnini|banyan|elm|beech|bearnut|willow|poplar|tamanu|spurgetree|azobe|guajacum|eucalyptus|ghostgum|ohia|satinash|leadwood|bluemahoe|linden|sal|horsechestnut|tigerwood|mahogany|sapele|saxaul|ash|catalpa|jacaranda|mangrove|empresstree|charred|chlorociboria|petrified)-barked-.*",
+    "value": {
+      "bark-h": {
+        "base": "wildcrafttree:block/wood/bark/{wood}-h",
+        "overlays": [
+          "game:block/slightlydarker"
+        ]
+      },
+      "bark": {
+        "base": "wildcrafttree:block/wood/bark/{wood}"
+      },
+      "cut": {
+        "base": "game:block/wood/debarked/{wood}"
+      }
+    }
+  },
+  {
+    "dependsOn": [
+      { "modid": "wildcrafttree" }
+    ],
+    "file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json",
+    "op": "addmerge",
+    "path": "/texturesByType/@.*-(cedar|fir|spruce|douglasfir|tuja|redcedar|yew|kauri|ginkgo|sycamore|honeylocust|dalbergia|umnini|banyan|elm|beech|bearnut|willow|poplar|tamanu|spurgetree|azobe|guajacum|eucalyptus|ghostgum|ohia|satinash|leadwood|bluemahoe|linden|sal|horsechestnut|tigerwood|mahogany|sapele|saxaul|ash|catalpa|jacaranda|mangrove|empresstree|charred|chlorociboria|petrified)-debarked-.*",
+    "value": {
+      "bark-h": {
+        "base": "game:block/wood/debarked/{wood}",
+        "overlays": [
+          "game:block/slightlydarker"
+        ]
+      },
+      "bark": {
+        "base": "game:block/wood/debarked/{wood}",
+        "rotation": 90
+      },
+      "cut": {
+        "base": "game:block/wood/debarked/{wood}"
+      }
+    }
+  },
+  {
+    "op": "move",
+    "frompath": "/texturesByType/*-barked-*",
+    "path": "/texturesByType/temp-*-barked-*",
+    "file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json"
+  },
+  {
+    "op": "move",
+    "frompath": "/texturesByType/temp-*-barked-*",
+    "path": "/texturesByType/*-barked-*",
+    "file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json"
+  },
+  {
+    "op": "move",
+    "frompath": "/texturesByType/*-debarked-*",
+    "path": "/texturesByType/temp-*-debarked-*",
+    "file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json"
+  },
+  {
+    "op": "move",
+    "frompath": "/texturesByType/temp-*-debarked-*",
+    "path": "/texturesByType/*-debarked-*",
+    "file": "postsandbeams:blocktypes/wood/woodtyped/decorbeam.json"
+  }
 ]

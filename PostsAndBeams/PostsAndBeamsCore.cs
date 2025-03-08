@@ -47,8 +47,11 @@ namespace PostsAndBeams
             base.Start(api);
 
             api.RegisterBlockClass("BlockPost", typeof(BlockPost));
+            api.RegisterBlockClass("BlockTorchHolderOrientable", typeof(BlockTorchHolderOrientable));
+            
             api.RegisterBlockBehaviorClass("BreakIfNotConnectedPost", typeof(BlockBehaviorBreakIfNotConnectedPost));
             api.RegisterBlockBehaviorClass("NWOrientableCustomDrops", typeof(BlockBehaviorNWOrientableCustomDrops));
+            api.RegisterBlockBehaviorClass("HorizontalOrientableHandleDrops", typeof(BlockBehaviorHorizontalOrientableHandleDrops));
 
             api.Logger.Notification("Loaded Posts And Beams!");
         }

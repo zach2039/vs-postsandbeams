@@ -1,151 +1,167 @@
 {
-	"code":"decorbeam",
-    "class":"Block",
-	"behaviors":[
+	"code": "decorbeam",
+	"class": "Block",
+	"behaviors": [
 		{
-			"name":"NWOrientableCustomDrops",
-			"properties":{
-				"drop": { "type": "block", "code": "decorbeam-{wood}-{bark}-we" }
+			"name": "NWOrientableCustomDrops",
+			"properties": {
+				"drop": {
+					"type": "block",
+					"code": "decorbeam-{wood}-{bark}-we"
+				}
 			}
 		}
 	],
-	"attributes":{
-		"handbook":{
-			"groupBy":[
+	"attributes": {
+		"handbook": {
+			"groupBy": [
 				"decorbeam-{wood}-*"
 			]
 		}
 	},
-	"variantgroups":[
+	"variantgroups": [
 		{
-			"code":"wood",
-			"states":[
+			"code": "wood",
+			"states": [
 				"aged"
 			],
-			"loadFromPropertiesCombine":[
+			"loadFromPropertiesCombine": [
 				"game:block/wood"
 			]
 		},
 		{
-			"code":"bark",
-			"states":[
+			"code": "bark",
+			"states": [
 				"barked",
 				"debarked"
 			]
 		},
 		{
-			"code":"orientation",
-			"states":[
+			"code": "orientation",
+			"states": [
 				"ns",
 				"we"
 			]
 		}
 	],
-	"creativeinventory":{
-		"general":[
+	"creativeinventory": {
+		"general": [
 			"*-we"
 		],
-		"decorative":[
+		"decorative": [
 			"*-we"
 		]
 	},
-	"shapeByType":{
-		"*-ns":{
-			"base":"postsandbeams:block/wood/beam",
-			"rotateY":90
+	"shapeByType": {
+		"*-ns": {
+			"base": "postsandbeams:block/wood/beam",
+			"rotateY": 90
 		},
-		"*-we":{
-			"base":"postsandbeams:block/wood/beam",
-			"rotateY":0
+		"*-we": {
+			"base": "postsandbeams:block/wood/beam",
+			"rotateY": 0
 		}
 	},
-	"heldTpIdleAnimation":"holdunderarm",
-	"blockmaterial":"Wood",
-	"texturesByType":{
-		"*":{
-			"bark-h":{
-				"baseByType":{
-					"*-barked-*":"game:block/wood/bark/{wood}-h",
-					"*-debarked-*":"game:block/wood/debarked/{wood}"
-				},
-				"overlays":[
+	"heldTpIdleAnimation": "holdunderarm",
+	"blockmaterial": "Wood",
+	"texturesByType": {
+		"*-barked-*": {
+			"bark-h": {
+				"base": "game:block/wood/bark/{wood}-h",
+				"overlays": [
 					"game:block/slightlydarker"
 				]
 			},
-			"cut":{
-				"baseByType":{
-					"*":"game:block/wood/debarked/{wood}"
-				}
+			"bark": {
+				"base": "game:block/wood/bark/{wood}"
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			}
+		},
+		"*-debarked-*": {
+			"bark-h": {
+				"base": "game:block/wood/debarked/{wood}",
+				"overlays": [
+					"game:block/slightlydarker"
+				]
+			},
+			"bark": {
+				"base": "game:block/wood/debarked/{wood}",
+				"rotation": 90
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
 			}
 		}
 	},
-	"replaceable":600,
-	"resistance":3,
-	"lightAbsorption":0,
-	"sidesolid":{
-		"all":false
+	"replaceable": 600,
+	"resistance": 3,
+	"lightAbsorption": 0,
+	"sidesolid": {
+		"all": false
 	},
-	"sideopaque":{
-		"all":false
+	"sideopaque": {
+		"all": false
 	},
-	"sounds":{
-		"place":"game:block/planks",
-		"hit":"game:block/planks",
-		"break":"game:block/planks",
-		"walk":"game:walk/wood"
+	"sounds": {
+		"place": "game:block/planks",
+		"hit": "game:block/planks",
+		"break": "game:block/planks",
+		"walk": "game:walk/wood"
 	},
-	"collisionbox":{
-		"x1":0.0,
-		"y1":0.5,
-		"z1":0.25,
-		"x2":1.0,
-		"y2":1.0,
-		"z2":0.75,
-		"rotateYByType":{
-			"*-ns":90,
-			"*-we":0
+	"collisionbox": {
+		"x1": 0.0,
+		"y1": 0.5,
+		"z1": 0.25,
+		"x2": 1.0,
+		"y2": 1.0,
+		"z2": 0.75,
+		"rotateYByType": {
+			"*-ns": 90,
+			"*-we": 0
 		}
 	},
-	"selectionbox":{
-		"x1":0.0,
-		"y1":0.5,
-		"z1":0.25,
-		"x2":1.0,
-		"y2":1.0,
-		"z2":0.75,
-		"rotateYByType":{
-			"*-ns":90,
-			"*-we":0
+	"selectionbox": {
+		"x1": 0.0,
+		"y1": 0.5,
+		"z1": 0.25,
+		"x2": 1.0,
+		"y2": 1.0,
+		"z2": 0.75,
+		"rotateYByType": {
+			"*-ns": 90,
+			"*-we": 0
 		}
 	},
-	"combustibleProps":{
-		"burnTemperature":600,
-		"burnDuration":20
+	"combustibleProps": {
+		"burnTemperature": 600,
+		"burnDuration": 20
 	},
-	"materialDensity":600,
-	"tpHandTransform":{
-		"translation":{
-			"x":-0.8,
-			"y":-0.68,
-			"z":-0.41
+	"materialDensity": 600,
+	"tpHandTransform": {
+		"translation": {
+			"x": -0.8,
+			"y": -0.68,
+			"z": -0.41
 		},
-		"rotation":{
-			"x":99,
-			"y":-10,
-			"z":-6
+		"rotation": {
+			"x": 99,
+			"y": -10,
+			"z": -6
 		},
-		"scale":0.5
+		"scale": 0.5
 	},
-	"fpHandTransform":{
-		"translation":{
-			"x":0.08,
-			"y":-0.2,
-			"z":0.6
+	"fpHandTransform": {
+		"translation": {
+			"x": 0.08,
+			"y": -0.2,
+			"z": 0.6
 		},
-		"rotation":{
-			"x":33,
-			"y":134,
-			"z":-102
+		"rotation": {
+			"x": 33,
+			"y": 134,
+			"z": -102
 		}
 	}
 }

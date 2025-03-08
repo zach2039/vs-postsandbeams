@@ -3,9 +3,9 @@
 	"class":"BlockPost",
 	"behaviors":[
 		{
-			"name":"CanAttach",
-			"properties":{
-				"sides":[
+			"name": "CanAttach",
+			"properties": {
+				"sides": [
 					"up",
 					"down"
 				]
@@ -38,7 +38,7 @@
 		},
 		{
 			"code":"bark",
-			"states":[
+			"states": [
 				"barked",
 				"debarked"
 			]
@@ -137,27 +137,34 @@
 	},
 	"drawtype":"JSON",
 	"blockmaterial":"Wood",
-	"texturesByType":{
-		"*":{
-			"bark-h":{
-				"baseByType":{
-					"*-barked-*":"game:block/wood/bark/{wood}-h",
-					"*-debarked-*":"game:block/wood/debarked/{wood}"
-				},
-				"overlays":[
+	"texturesByType": {
+		"*-barked-*": {
+			"bark-h": {
+				"base": "game:block/wood/bark/{wood}-h",
+				"overlays": [
 					"game:block/slightlydarker"
 				]
 			},
-			"bark":{
-				"baseByType":{
-					"*-barked-*":"game:block/wood/bark/{wood}",
-					"*-debarked-*":"game:block/wood/debarked/{wood}"
-				}
+			"bark": {
+				"base": "game:block/wood/bark/{wood}"
 			},
-			"cut":{
-				"baseByType":{
-					"*":"game:block/wood/debarked/{wood}"
-				}
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			}
+		},
+		"*-debarked-*": {
+			"bark-h": {
+				"base": "game:block/wood/debarked/{wood}",
+				"overlays": [
+					"game:block/slightlydarker"
+				]
+			},
+			"bark": {
+				"base": "game:block/wood/debarked/{wood}",
+				"rotation": 90
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
 			}
 		}
 	},

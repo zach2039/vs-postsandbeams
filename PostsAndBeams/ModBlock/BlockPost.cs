@@ -20,7 +20,32 @@ namespace PostsAndBeams.ModBlock
 		{
 		}
 
-		public bool ShouldConnectAt(IWorldAccessor world, BlockPos ownPos, BlockFacing side)
+		public override void OnLoaded(ICoreAPI api)
+		{
+            base.OnLoaded(api);
+            this.torchholderStacks = new List<ItemStack>();
+            foreach (CollectibleObject obj in api.World.Collectibles)
+            {
+                if (obj.Code.Path.StartsWithFast("torchholder") && obj.Variant["state"] == "empty" && obj.Variant["horizontalorientation"] == "north")
+                {
+                    this.torchholderStacks.Add(new ItemStack(obj));
+                }
+            }
+            if (api.Side == EnumAppSide.Client)
+            {
+                this.interactions = new WorldInteraction[]
+                {
+                    new WorldInteraction
+                    {
+                        ActionLangCode = "postsandbeams:blockhelp-woodenpost-addtorchholder",
+                        MouseButton = EnumMouseButton.Right,
+                        Itemstacks = this.torchholderStacks.ToArray()
+                    }
+                };
+            }
+        }
+
+        public bool ShouldConnectAt(IWorldAccessor world, BlockPos ownPos, BlockFacing side)
 		{
 			Block block = world.BlockAccessor.GetBlock(ownPos.AddCopy(side));
 			JsonObject attributes = block.Attributes;
@@ -252,5 +277,63 @@ namespace PostsAndBeams.ModBlock
 				}
 			};
 		}
+
+        public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
+        {
+			if (this.Variant["type"] == "empty" && blockSel.Face.IsHorizontal)
+			{
+				// Allow attachment of torch holders
+				ItemStack heldStack = byPlayer.InventoryManager.ActiveHotbarSlot.Itemstack;
+				if (heldStack != null && WildcardUtil.Match("*:torchholder-*-empty-north", heldStack.Collectible.Code.ToString()))
+				{
+					byPlayer.InventoryManager.ActiveHotbarSlot.TakeOut(1);
+					byPlayer.InventoryManager.ActiveHotbarSlot.MarkDirty();
+
+					string wood = this.Variant["wood"];
+                    string bark = this.Variant["bark"];
+                    string material = heldStack.Collectible.Variant["material"];
+					string facing = blockSel.Face.Code.ToString();
+
+                    Block postTorchholderBlock = world.BlockAccessor.GetBlock(new AssetLocation("postsandbeams", $"woodenposttorchholder-{wood}-{bark}-{material}-empty-{facing}"));
+
+					if (postTorchholderBlock != null)
+					{
+                        world.BlockAccessor.ExchangeBlock(postTorchholderBlock.BlockId, blockSel.Position);
+                        BlockSounds sounds = this.Sounds;
+                        if (((sounds != null) ? sounds.Place : null) != null)
+                        {
+                            world.PlaySoundAt(this.Sounds.Place, blockSel.Position, 0.1, byPlayer, true, 32f, 1f);
+                        }
+                        return true;
+                    }
+					else
+					{
+                        world.Api.Logger.Warning("[PostsAndBeams] Could not torch holder post block for " + heldStack.ToString());
+                        return false;
+					}	
+				}
+			}
+
+            return base.OnBlockInteractStart(world, byPlayer, blockSel);
+        }
+
+        public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection blockSel, IPlayer forPlayer)
+        {
+			if (this.Variant["type"] == "empty" && blockSel.Face.IsHorizontal)
+			{
+				//ItemStack heldStack = forPlayer.InventoryManager.ActiveHotbarSlot.Itemstack;
+				//if (heldStack != null && WildcardUtil.Match("*:torchholder-*-empty-north", heldStack.Collectible.Code.ToString()))
+				//{ 
+					// Prompt for attachment of torch holders
+					return this.interactions.Append(base.GetPlacedBlockInteractionHelp(world, blockSel, forPlayer));
+				//}	
+            }
+
+			return base.GetPlacedBlockInteractionHelp(world, blockSel, forPlayer);
+        }
+
+        private List<ItemStack> torchholderStacks;
+
+        private WorldInteraction[] interactions;
     }
 }

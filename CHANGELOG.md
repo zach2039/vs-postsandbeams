@@ -1,3 +1,10 @@
+### v1.20.x-1.4.0
+
+- Fix recipe issue which prevented crafting debarked beams back into debarked posts (thanks, wwwDayDream!)
+- Fix compat with wildcrafttree_1.2.0
+- Fix en lang; add lang gen scripts from WoodStain
+- Add ability to place torch holders on wooden posts with no connections
+
 ### v1.19.x-1.3.2
 
  - Change plank textures for wildcraft tree beams to debarked textures
