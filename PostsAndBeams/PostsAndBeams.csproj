@@ -38,6 +38,7 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Remove="assets\postsandbeams\blocktypes\wood\woodtyped\woodenpost-torchholder.json" />
+    <None Remove="assets\postsandbeams\patches\compat\wildcrafttree\woodenpost-torchholder.json" />
     <Content Include="modinfo.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

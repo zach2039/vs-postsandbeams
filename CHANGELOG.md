@@ -4,6 +4,7 @@
 - Fix compat with wildcrafttree_1.2.0
 - Fix en lang; add lang gen scripts from WoodStain
 - Add ability to place torch holders on wooden posts with no connections
+- Rotate horizontal debarked texture on beams and posts by 90 degrees
 
 ### v1.19.x-1.3.2
 

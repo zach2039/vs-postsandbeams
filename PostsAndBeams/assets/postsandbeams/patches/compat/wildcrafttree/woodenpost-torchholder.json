@@ -1,0 +1,70 @@
+[
+  {
+    "dependsOn": [
+      { "modid": "wildcrafttree" }
+    ],
+    "file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json",
+    "op": "addmerge",
+    "path": "/variantgroups/0/loadFromPropertiesCombine/-",
+    "value": "wildcrafttree:block/wood"
+  },
+  {
+    "dependsOn": [
+      { "modid": "wildcrafttree" }
+    ],
+    "file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json",
+    "op": "addmerge",
+    "path": "/texturesByType/@.*-(cedar|fir|spruce|douglasfir|tuja|redcedar|yew|kauri|ginkgo|sycamore|honeylocust|dalbergia|umnini|banyan|elm|beech|bearnut|willow|poplar|tamanu|spurgetree|azobe|guajacum|eucalyptus|ghostgum|ohia|satinash|leadwood|bluemahoe|linden|sal|horsechestnut|tigerwood|mahogany|sapele|saxaul|ash|catalpa|jacaranda|mangrove|empresstree|charred|chlorociboria|petrified)-barked-.*",
+    "value": {
+      "bark": {
+        "base": "wildcrafttree:block/wood/bark/{wood}"
+      },
+      "cut": {
+        "base": "game:block/wood/debarked/{wood}"
+      },
+      "material": { "base": "game:block/metal/torchholder/{material}" }
+    }
+  },
+  {
+    "dependsOn": [
+      { "modid": "wildcrafttree" }
+    ],
+    "file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json",
+    "op": "addmerge",
+    "path": "/texturesByType/@.*-(cedar|fir|spruce|douglasfir|tuja|redcedar|yew|kauri|ginkgo|sycamore|honeylocust|dalbergia|umnini|banyan|elm|beech|bearnut|willow|poplar|tamanu|spurgetree|azobe|guajacum|eucalyptus|ghostgum|ohia|satinash|leadwood|bluemahoe|linden|sal|horsechestnut|tigerwood|mahogany|sapele|saxaul|ash|catalpa|jacaranda|mangrove|empresstree|charred|chlorociboria|petrified)-debarked-.*",
+    "value": {
+      "bark": {
+        "base": "game:block/wood/debarked/{wood}",
+        "rotation": 90
+      },
+      "cut": {
+        "base": "game:block/wood/debarked/{wood}"
+      },
+      "material": { "base": "game:block/metal/torchholder/{material}" }
+    }
+  },
+  {
+    "op": "move",
+    "frompath": "/texturesByType/*-barked-*",
+    "path": "/texturesByType/temp-*-barked-*",
+    "file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json"
+  },
+  {
+    "op": "move",
+    "frompath": "/texturesByType/temp-*-barked-*",
+    "path": "/texturesByType/*-barked-*",
+    "file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json"
+  },
+  {
+    "op": "move",
+    "frompath": "/texturesByType/*-debarked-*",
+    "path": "/texturesByType/temp-*-debarked-*",
+    "file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json"
+  },
+  {
+    "op": "move",
+    "frompath": "/texturesByType/temp-*-debarked-*",
+    "path": "/texturesByType/*-debarked-*",
+    "file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json"
+  }
+]
