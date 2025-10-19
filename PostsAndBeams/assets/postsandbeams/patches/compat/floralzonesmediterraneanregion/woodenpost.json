@@ -1,0 +1,92 @@
+[
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesmediterraneanregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json",
+		"op": "addmerge",
+		"path": "/variantgroups/0/loadFromPropertiesCombine/-",
+		"value": "floralzonesmediterraneanregion:block/wood"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesmediterraneanregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json",
+		"op": "addmerge",
+		"path": "/texturesByType/@.*-(populusalba|taxusbaccata)-barked-.*",
+		"value": {
+			"bark-h": {
+				"base": "floralzonesmediterraneanregion:block/wood/bark/{wood}-h",
+				"overlays": [
+					"game:block/slightlydarker"
+				]
+			},
+			"bark": {
+				"base": "floralzonesmediterraneanregion:block/wood/bark/{wood}"
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			}
+		}
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesmediterraneanregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json",
+		"op": "addmerge",
+		"path": "/texturesByType/@.*-(populusalba|taxusbaccata)-debarked-.*",
+		"value": {
+			"bark-h": {
+				"base": "game:block/wood/debarked/{wood}",
+				"overlays": [
+					"game:block/slightlydarker"
+				]
+			},
+			"bark": {
+				"base": "game:block/wood/debarked/{wood}",
+				"rotation": 90
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			}
+		}
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesmediterraneanregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/*-barked-*",
+		"path": "/texturesByType/temp-*-barked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesmediterraneanregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/temp-*-barked-*",
+		"path": "/texturesByType/*-barked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesmediterraneanregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/*-debarked-*",
+		"path": "/texturesByType/temp-*-debarked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesmediterraneanregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/temp-*-debarked-*",
+		"path": "/texturesByType/*-debarked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost.json"
+	}
+]

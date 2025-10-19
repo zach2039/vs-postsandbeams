@@ -1,0 +1,82 @@
+[
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescentralaustralianregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json",
+		"op": "addmerge",
+		"path": "/variantgroups/0/loadFromPropertiesCombine/-",
+		"value": "floralzonescentralaustralianregion:block/wood"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescentralaustralianregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json",
+		"op": "addmerge",
+		"path": "/texturesByType/@.*-(corymbiaaparrerinja|eucalyptuscamaldulensis)-barked-.*",
+		"value": {
+			"bark": {
+				"base": "floralzonescentralaustralianregion:block/wood/bark/{wood}"
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			},
+			"material": { "base": "game:block/metal/torchholder/{material}" }
+		}
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescentralaustralianregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json",
+		"op": "addmerge",
+		"path": "/texturesByType/@.*-(corymbiaaparrerinja|eucalyptuscamaldulensis)-debarked-.*",
+		"value": {
+			"bark": {
+				"base": "game:block/wood/debarked/{wood}",
+				"rotation": 90
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			},
+			"material": { "base": "game:block/metal/torchholder/{material}" }
+		}
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescentralaustralianregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/*-barked-*",
+		"path": "/texturesByType/temp-*-barked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescentralaustralianregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/temp-*-barked-*",
+		"path": "/texturesByType/*-barked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescentralaustralianregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/*-debarked-*",
+		"path": "/texturesByType/temp-*-debarked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescentralaustralianregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/temp-*-debarked-*",
+		"path": "/texturesByType/*-debarked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json"
+	}
+]

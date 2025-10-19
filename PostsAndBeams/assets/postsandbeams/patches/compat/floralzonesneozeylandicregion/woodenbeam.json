@@ -1,0 +1,92 @@
+[
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesneozeylandicregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json",
+		"op": "addmerge",
+		"path": "/variantgroups/0/loadFromPropertiesCombine/-",
+		"value": "floralzonesneozeylandicregion:block/wood"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesneozeylandicregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json",
+		"op": "addmerge",
+		"path": "/texturesByType/@.*-(araucariaheterophylla|dacrydiumcupressinum|nothofagusmenziesii|podocarpustotara)-barked-.*",
+		"value": {
+			"bark-h": {
+				"base": "floralzonesneozeylandicregion:block/wood/bark/{wood}-h",
+				"overlays": [
+					"game:block/slightlydarker"
+				]
+			},
+			"bark": {
+				"base": "floralzonesneozeylandicregion:block/wood/bark/{wood}"
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			}
+		}
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesneozeylandicregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json",
+		"op": "addmerge",
+		"path": "/texturesByType/@.*-(araucariaheterophylla|dacrydiumcupressinum|nothofagusmenziesii|podocarpustotara)-debarked-.*",
+		"value": {
+			"bark-h": {
+				"base": "game:block/wood/debarked/{wood}",
+				"overlays": [
+					"game:block/slightlydarker"
+				]
+			},
+			"bark": {
+				"base": "game:block/wood/debarked/{wood}",
+				"rotation": 90
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			}
+		}
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesneozeylandicregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/*-barked-*",
+		"path": "/texturesByType/temp-*-barked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesneozeylandicregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/temp-*-barked-*",
+		"path": "/texturesByType/*-barked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesneozeylandicregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/*-debarked-*",
+		"path": "/texturesByType/temp-*-debarked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonesneozeylandicregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/temp-*-debarked-*",
+		"path": "/texturesByType/*-debarked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json"
+	}
+]

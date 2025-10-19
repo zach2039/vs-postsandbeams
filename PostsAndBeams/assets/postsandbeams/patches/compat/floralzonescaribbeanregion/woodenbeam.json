@@ -1,0 +1,92 @@
+[
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescaribbeanregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json",
+		"op": "addmerge",
+		"path": "/variantgroups/0/loadFromPropertiesCombine/-",
+		"value": "floralzonescaribbeanregion:block/wood"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescaribbeanregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json",
+		"op": "addmerge",
+		"path": "/texturesByType/*-lysilomalatisiliquum-barked-*",
+		"value": {
+			"bark-h": {
+				"base": "floralzonescaribbeanregion:block/wood/bark/{wood}-h",
+				"overlays": [
+					"game:block/slightlydarker"
+				]
+			},
+			"bark": {
+				"base": "floralzonescaribbeanregion:block/wood/bark/{wood}"
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			}
+		}
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescaribbeanregion" }
+		],
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json",
+		"op": "addmerge",
+		"path": "/texturesByType/*-lysilomalatisiliquum-debarked-*",
+		"value": {
+			"bark-h": {
+				"base": "game:block/wood/debarked/{wood}",
+				"overlays": [
+					"game:block/slightlydarker"
+				]
+			},
+			"bark": {
+				"base": "game:block/wood/debarked/{wood}",
+				"rotation": 90
+			},
+			"cut": {
+				"base": "game:block/wood/debarked/{wood}"
+			}
+		}
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescaribbeanregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/*-barked-*",
+		"path": "/texturesByType/temp-*-barked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescaribbeanregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/temp-*-barked-*",
+		"path": "/texturesByType/*-barked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescaribbeanregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/*-debarked-*",
+		"path": "/texturesByType/temp-*-debarked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json"
+	},
+	{
+		"dependsOn": [
+			{ "modid": "floralzonescaribbeanregion" }
+		],
+		"op": "move",
+		"frompath": "/texturesByType/temp-*-debarked-*",
+		"path": "/texturesByType/*-debarked-*",
+		"file": "postsandbeams:blocktypes/wood/woodtyped/woodenbeam.json"
+	}
+]
