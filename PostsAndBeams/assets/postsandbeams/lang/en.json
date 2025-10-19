@@ -128,6 +128,16 @@
 	"block-woodenbeam-blackpoplar-debarked-*": "Debarked wooden beam (Black poplar)",
 	"block-decorbeam-blackpoplar-debarked-*": "Debarked decorative wooden beam (Black poplar)",
 
+	"block-woodenpost-ocoteabullata-barked-*": "Wooden post (Black Stinkwood)",
+	"block-woodenposttorchholder-ocoteabullata-barked-*": "Wooden post with torch holder (Black Stinkwood)",
+	"block-woodenbeam-ocoteabullata-barked-*": "Wooden beam (Black Stinkwood)",
+	"block-decorbeam-ocoteabullata-barked-*": "Decorative wooden beam (Black Stinkwood)",
+
+	"block-woodenpost-ocoteabullata-debarked-*": "Debarked wooden post (Black Stinkwood)",
+	"block-woodenposttorchholder-ocoteabullata-debarked-*": "Debarked wooden post with torch holder (Black Stinkwood)",
+	"block-woodenbeam-ocoteabullata-debarked-*": "Debarked wooden beam (Black Stinkwood)",
+	"block-decorbeam-ocoteabullata-debarked-*": "Debarked decorative wooden beam (Black Stinkwood)",
+
 	"block-woodenpost-bluemahoe-barked-*": "Wooden post (Blue mahoe)",
 	"block-woodenposttorchholder-bluemahoe-barked-*": "Wooden post with torch holder (Blue mahoe)",
 	"block-woodenbeam-bluemahoe-barked-*": "Wooden beam (Blue mahoe)",
@@ -187,6 +197,16 @@
 	"block-woodenposttorchholder-chlorociboria-debarked-*": "Debarked wooden post with torch holder (Chlorociboria)",
 	"block-woodenbeam-chlorociboria-debarked-*": "Debarked wooden beam (Chlorociboria)",
 	"block-decorbeam-chlorociboria-debarked-*": "Debarked decorative wooden beam (Chlorociboria)",
+
+	"block-woodenpost-afrocarpusfalcatus-barked-*": "Wooden post (Common Yellowwood)",
+	"block-woodenposttorchholder-afrocarpusfalcatus-barked-*": "Wooden post with torch holder (Common Yellowwood)",
+	"block-woodenbeam-afrocarpusfalcatus-barked-*": "Wooden beam (Common Yellowwood)",
+	"block-decorbeam-afrocarpusfalcatus-barked-*": "Decorative wooden beam (Common Yellowwood)",
+
+	"block-woodenpost-afrocarpusfalcatus-debarked-*": "Debarked wooden post (Common Yellowwood)",
+	"block-woodenposttorchholder-afrocarpusfalcatus-debarked-*": "Debarked wooden post with torch holder (Common Yellowwood)",
+	"block-woodenbeam-afrocarpusfalcatus-debarked-*": "Debarked wooden beam (Common Yellowwood)",
+	"block-decorbeam-afrocarpusfalcatus-debarked-*": "Debarked decorative wooden beam (Common Yellowwood)",
 
 	"block-woodenpost-dalbergia-barked-*": "Wooden post (Dalbergia)",
 	"block-woodenposttorchholder-dalbergia-barked-*": "Wooden post with torch holder (Dalbergia)",
@@ -248,6 +268,26 @@
 	"block-woodenbeam-eucalyptus-debarked-*": "Debarked wooden beam (Eucalyptus)",
 	"block-decorbeam-eucalyptus-debarked-*": "Debarked decorative wooden beam (Eucalyptus)",
 
+	"block-woodenpost-taxusbaccata-barked-*": "Wooden post (European Yew)",
+	"block-woodenposttorchholder-taxusbaccata-barked-*": "Wooden post with torch holder (European Yew)",
+	"block-woodenbeam-taxusbaccata-barked-*": "Wooden beam (European Yew)",
+	"block-decorbeam-taxusbaccata-barked-*": "Decorative wooden beam (European Yew)",
+
+	"block-woodenpost-taxusbaccata-debarked-*": "Debarked wooden post (European Yew)",
+	"block-woodenposttorchholder-taxusbaccata-debarked-*": "Debarked wooden post with torch holder (European Yew)",
+	"block-woodenbeam-taxusbaccata-debarked-*": "Debarked wooden beam (European Yew)",
+	"block-decorbeam-taxusbaccata-debarked-*": "Debarked decorative wooden beam (European Yew)",
+
+	"block-woodenpost-lysilomalatisiliquum-barked-*": "Wooden post (False Tamarind)",
+	"block-woodenposttorchholder-lysilomalatisiliquum-barked-*": "Wooden post with torch holder (False Tamarind)",
+	"block-woodenbeam-lysilomalatisiliquum-barked-*": "Wooden beam (False Tamarind)",
+	"block-decorbeam-lysilomalatisiliquum-barked-*": "Decorative wooden beam (False Tamarind)",
+
+	"block-woodenpost-lysilomalatisiliquum-debarked-*": "Debarked wooden post (False Tamarind)",
+	"block-woodenposttorchholder-lysilomalatisiliquum-debarked-*": "Debarked wooden post with torch holder (False Tamarind)",
+	"block-woodenbeam-lysilomalatisiliquum-debarked-*": "Debarked wooden beam (False Tamarind)",
+	"block-decorbeam-lysilomalatisiliquum-debarked-*": "Debarked decorative wooden beam (False Tamarind)",
+
 	"block-woodenpost-fir-barked-*": "Wooden post (Fir)",
 	"block-woodenposttorchholder-fir-barked-*": "Wooden post with torch holder (Fir)",
 	"block-woodenbeam-fir-barked-*": "Wooden beam (Fir)",
@@ -257,6 +297,16 @@
 	"block-woodenposttorchholder-fir-debarked-*": "Debarked wooden post with torch holder (Fir)",
 	"block-woodenbeam-fir-debarked-*": "Debarked wooden beam (Fir)",
 	"block-decorbeam-fir-debarked-*": "Debarked decorative wooden beam (Fir)",
+
+	"block-woodenpost-corymbiaaparrerinja-barked-*": "Wooden post (Ghost Gum)",
+	"block-woodenposttorchholder-corymbiaaparrerinja-barked-*": "Wooden post with torch holder (Ghost Gum)",
+	"block-woodenbeam-corymbiaaparrerinja-barked-*": "Wooden beam (Ghost Gum)",
+	"block-decorbeam-corymbiaaparrerinja-barked-*": "Decorative wooden beam (Ghost Gum)",
+
+	"block-woodenpost-corymbiaaparrerinja-debarked-*": "Debarked wooden post (Ghost Gum)",
+	"block-woodenposttorchholder-corymbiaaparrerinja-debarked-*": "Debarked wooden post with torch holder (Ghost Gum)",
+	"block-woodenbeam-corymbiaaparrerinja-debarked-*": "Debarked wooden beam (Ghost Gum)",
+	"block-decorbeam-corymbiaaparrerinja-debarked-*": "Debarked decorative wooden beam (Ghost Gum)",
 
 	"block-woodenpost-ghostgum-barked-*": "Wooden post (Ghost gum)",
 	"block-woodenposttorchholder-ghostgum-barked-*": "Wooden post with torch holder (Ghost gum)",
@@ -328,6 +378,16 @@
 	"block-woodenbeam-kapok-debarked-*": "Debarked wooden beam (Kapok)",
 	"block-decorbeam-kapok-debarked-*": "Debarked decorative wooden beam (Kapok)",
 
+	"block-woodenpost-searsialancea-barked-*": "Wooden post (Karee)",
+	"block-woodenposttorchholder-searsialancea-barked-*": "Wooden post with torch holder (Karee)",
+	"block-woodenbeam-searsialancea-barked-*": "Wooden beam (Karee)",
+	"block-decorbeam-searsialancea-barked-*": "Decorative wooden beam (Karee)",
+
+	"block-woodenpost-searsialancea-debarked-*": "Debarked wooden post (Karee)",
+	"block-woodenposttorchholder-searsialancea-debarked-*": "Debarked wooden post with torch holder (Karee)",
+	"block-woodenbeam-searsialancea-debarked-*": "Debarked wooden beam (Karee)",
+	"block-decorbeam-searsialancea-debarked-*": "Debarked decorative wooden beam (Karee)",
+
 	"block-woodenpost-kauri-barked-*": "Wooden post (Kauri)",
 	"block-woodenposttorchholder-kauri-barked-*": "Wooden post with torch holder (Kauri)",
 	"block-woodenbeam-kauri-barked-*": "Wooden beam (Kauri)",
@@ -397,6 +457,16 @@
 	"block-woodenposttorchholder-maple-debarked-*": "Debarked wooden post with torch holder (Maple)",
 	"block-woodenbeam-maple-debarked-*": "Debarked wooden beam (Maple)",
 	"block-decorbeam-maple-debarked-*": "Debarked decorative wooden beam (Maple)",
+	
+	"block-woodenpost-araucariaheterophylla-barked-*": "Wooden post (Norfolk Island Pine)",
+	"block-woodenposttorchholder-araucariaheterophylla-barked-*": "Wooden post with torch holder (Norfolk Island Pine)",
+	"block-woodenbeam-araucariaheterophylla-barked-*": "Wooden beam (Norfolk Island Pine)",
+	"block-decorbeam-araucariaheterophylla-barked-*": "Decorative wooden beam (Norfolk Island Pine)",
+
+	"block-woodenpost-araucariaheterophylla-debarked-*": "Debarked wooden post (Norfolk Island Pine)",
+	"block-woodenposttorchholder-araucariaheterophylla-debarked-*": "Debarked wooden post with torch holder (Norfolk Island Pine)",
+	"block-woodenbeam-araucariaheterophylla-debarked-*": "Debarked wooden beam (Norfolk Island Pine)",
+	"block-decorbeam-araucariaheterophylla-debarked-*": "Debarked decorative wooden beam (Norfolk Island Pine)",
 
 	"block-woodenpost-oak-barked-*": "Wooden post (Oak)",
 	"block-woodenposttorchholder-oak-barked-*": "Wooden post with torch holder (Oak)",
@@ -478,6 +548,16 @@
 	"block-woodenbeam-redcedar-debarked-*": "Debarked wooden beam (Red cedar)",
 	"block-decorbeam-redcedar-debarked-*": "Debarked decorative wooden beam (Red cedar)",
 
+	"block-woodenpost-eucalyptuscamaldulensis-barked-*": "Wooden post (Red River Gum)",
+	"block-woodenposttorchholder-eucalyptuscamaldulensis-barked-*": "Wooden post with torch holder (Red River Gum)",
+	"block-woodenbeam-eucalyptuscamaldulensis-barked-*": "Wooden beam (Red River Gum)",
+	"block-decorbeam-eucalyptuscamaldulensis-barked-*": "Decorative wooden beam (Red River Gum)",
+
+	"block-woodenpost-eucalyptuscamaldulensis-debarked-*": "Debarked wooden post (Red River Gum)",
+	"block-woodenposttorchholder-eucalyptuscamaldulensis-debarked-*": "Debarked wooden post with torch holder (Red River Gum)",
+	"block-woodenbeam-eucalyptuscamaldulensis-debarked-*": "Debarked wooden beam (Red River Gum)",
+	"block-decorbeam-eucalyptuscamaldulensis-debarked-*": "Debarked decorative wooden beam (Red River Gum)",
+
 	"block-woodenpost-redwood-barked-*": "Wooden post (Redwood)",
 	"block-woodenposttorchholder-redwood-barked-*": "Wooden post with torch holder (Redwood)",
 	"block-woodenbeam-redwood-barked-*": "Wooden beam (Redwood)",
@@ -487,6 +567,16 @@
 	"block-woodenposttorchholder-redwood-debarked-*": "Debarked wooden post with torch holder (Redwood)",
 	"block-woodenbeam-redwood-debarked-*": "Debarked wooden beam (Redwood)",
 	"block-decorbeam-redwood-debarked-*": "Debarked decorative wooden beam (Redwood)",
+
+	"block-woodenpost-dacrydiumcupressinum-barked-*": "Wooden post (Rimu)",
+	"block-woodenposttorchholder-dacrydiumcupressinum-barked-*": "Wooden post with torch holder (Rimu)",
+	"block-woodenbeam-dacrydiumcupressinum-barked-*": "Wooden beam (Rimu)",
+	"block-decorbeam-dacrydiumcupressinum-barked-*": "Decorative wooden beam (Rimu)",
+
+	"block-woodenpost-dacrydiumcupressinum-debarked-*": "Debarked wooden post (Rimu)",
+	"block-woodenposttorchholder-dacrydiumcupressinum-debarked-*": "Debarked wooden post with torch holder (Rimu)",
+	"block-woodenbeam-dacrydiumcupressinum-debarked-*": "Debarked wooden beam (Rimu)",
+	"block-decorbeam-dacrydiumcupressinum-debarked-*": "Debarked decorative wooden beam (Rimu)",
 
 	"block-woodenpost-rottenebony-barked-*": "Wooden post (Rotten ebony)",
 	"block-woodenposttorchholder-rottenebony-barked-*": "Wooden post with torch holder (Rotten ebony)",
@@ -578,6 +668,16 @@
 	"block-woodenbeam-tamanu-debarked-*": "Debarked wooden beam (Tamanu)",
 	"block-decorbeam-tamanu-debarked-*": "Debarked decorative wooden beam (Tamanu)",
 
+	"block-woodenpost-nothofagusmenziesii-barked-*": "Wooden post (Tawhai)",
+	"block-woodenposttorchholder-nothofagusmenziesii-barked-*": "Wooden post with torch holder (Tawhai)",
+	"block-woodenbeam-nothofagusmenziesii-barked-*": "Wooden beam (Tawhai)",
+	"block-decorbeam-nothofagusmenziesii-barked-*": "Decorative wooden beam (Tawhai)",
+
+	"block-woodenpost-nothofagusmenziesii-debarked-*": "Debarked wooden post (Tawhai)",
+	"block-woodenposttorchholder-nothofagusmenziesii-debarked-*": "Debarked wooden post with torch holder (Tawhai)",
+	"block-woodenbeam-nothofagusmenziesii-debarked-*": "Debarked wooden beam (Tawhai)",
+	"block-decorbeam-nothofagusmenziesii-debarked-*": "Debarked decorative wooden beam (Tawhai)",
+
 	"block-woodenpost-tigerwood-barked-*": "Wooden post (Tigerwood)",
 	"block-woodenposttorchholder-tigerwood-barked-*": "Wooden post with torch holder (Tigerwood)",
 	"block-woodenbeam-tigerwood-barked-*": "Wooden beam (Tigerwood)",
@@ -587,6 +687,16 @@
 	"block-woodenposttorchholder-tigerwood-debarked-*": "Debarked wooden post with torch holder (Tigerwood)",
 	"block-woodenbeam-tigerwood-debarked-*": "Debarked wooden beam (Tigerwood)",
 	"block-decorbeam-tigerwood-debarked-*": "Debarked decorative wooden beam (Tigerwood)",
+
+	"block-woodenpost-podocarpustotara-barked-*": "Wooden post (Totara)",
+	"block-woodenposttorchholder-podocarpustotara-barked-*": "Wooden post with torch holder (Totara)",
+	"block-woodenbeam-podocarpustotara-barked-*": "Wooden beam (Totara)",
+	"block-decorbeam-podocarpustotara-barked-*": "Decorative wooden beam (Totara)",
+
+	"block-woodenpost-podocarpustotara-debarked-*": "Debarked wooden post (Totara)",
+	"block-woodenposttorchholder-podocarpustotara-debarked-*": "Debarked wooden post with torch holder (Totara)",
+	"block-woodenbeam-podocarpustotara-debarked-*": "Debarked wooden beam (Totara)",
+	"block-decorbeam-podocarpustotara-debarked-*": "Debarked decorative wooden beam (Totara)"
 
 	"block-woodenpost-tuja-barked-*": "Wooden post (Tuja)",
 	"block-woodenposttorchholder-tuja-barked-*": "Wooden post with torch holder (Tuja)",
@@ -637,6 +747,16 @@
 	"block-woodenposttorchholder-walnut-debarked-*": "Debarked wooden post with torch holder (Walnut)",
 	"block-woodenbeam-walnut-debarked-*": "Debarked wooden beam (Walnut)",
 	"block-decorbeam-walnut-debarked-*": "Debarked decorative wooden beam (Walnut)",
+
+	"block-woodenpost-populusalba-barked-*": "Wooden post (White Poplar)",
+	"block-woodenposttorchholder-populusalba-barked-*": "Wooden post with torch holder (White Poplar)",
+	"block-woodenbeam-populusalba-barked-*": "Wooden beam (White Poplar)",
+	"block-decorbeam-populusalba-barked-*": "Decorative wooden beam (White Poplar)",
+
+	"block-woodenpost-populusalba-debarked-*": "Debarked wooden post (White Poplar)",
+	"block-woodenposttorchholder-populusalba-debarked-*": "Debarked wooden post with torch holder (White Poplar)",
+	"block-woodenbeam-populusalba-debarked-*": "Debarked wooden beam (White Poplar)",
+	"block-decorbeam-populusalba-debarked-*": "Debarked decorative wooden beam (White Poplar)",
 
 	"block-woodenpost-willow-barked-*": "Wooden post (Willow)",
 	"block-woodenposttorchholder-willow-barked-*": "Wooden post with torch holder (Willow)",
