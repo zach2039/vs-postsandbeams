@@ -38,5 +38,5 @@ Compatibility
 
  - [Floral Zones](https://mods.vintagestory.at/list/mod?sortby=lastReleased&sortdir=d&text=floral+zones&side=&a=&mv=&c=&t=)
  - [Wildcraft Trees](https://mods.vintagestory.at/wildcrafttrees)
- - [More Torch Holders](https://mods.vintagestory.at/moretorchholders)
+ - [More Torch Holders](https://mods.vintagestory.at/moretorchholders) (Thanks to ShaeTsu!)
 
