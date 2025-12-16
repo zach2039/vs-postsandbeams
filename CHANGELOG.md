@@ -1,7 +1,12 @@
+### v1.26.x-1.5.0
+
+ - Update to VS-v1.26.6
+ - Integrate ShaeTsu's MoreTorchholders support
+
 ### v1.20.x-1.4.0
 
 - Fix recipe issue which prevented crafting debarked beams back into debarked posts (thanks, wwwDayDream!)
-- Fix compat with wildcrafttree_1.2.0
+- Fix compat with wildcrafttree\_1.2.0
 - Fix en lang; add lang gen scripts from WoodStain
 - Add ability to place torch holders on wooden posts with no connections
 - Rotate horizontal debarked texture on beams and posts by 90 degrees

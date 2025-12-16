@@ -1,0 +1,11 @@
+[
+  {
+    "dependsOn": [
+      { "modid": "moretorchholders" }
+    ],
+    "file": "postsandbeams:blocktypes/wood/woodtyped/woodenpost-torchholder.json",
+    "op": "addmerge",
+    "path": "/variantgroups/2/states",
+    "value": [ "bismuth", "bismuthbronze", "blackbronze", "brass", "copper", "gold", "iron", "meteoriciron", "molybdochalkos", "silver", "steel", "tinbronze" ]
+  }
+]
