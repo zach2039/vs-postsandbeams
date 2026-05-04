@@ -658,5 +658,9 @@
 	"block-woodenbeam-yew-debarked-*": "Debarked wooden beam (Yew)",
 	"block-decorbeam-yew-debarked-*": "Debarked decorative wooden beam (Yew)",
 
+	"block-woodenposttorchholder-*": "Wooden post with torch holder",
+	"block-woodenpost-*": "Wooden post",
+	"block-woodenbeam-*": "Wooden beam",
+	"block-decorbeam-*": "Decorative wooden beam"
 
 }

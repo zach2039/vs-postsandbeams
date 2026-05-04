@@ -16,6 +16,10 @@
  - Add "ruined" to woodenpost-torchholder material variants (1.22 vanilla torchholder now has brass/aged/ruined; players couldn't attach ruined holders to posts)
  - Bundle modicon.png in build output (was present at source but missing from zip; per Anego's official .csproj template)
  - Add modinfo.json $schema reference for editor IntelliSense (per Anego's official modinfo template)
+ - Hide woodenposttorchholder variants from survival handbook (matches vanilla pattern for lantern, supportbeam — they're not directly craftable)
+ - Add lang fallbacks (block-{woodenpost,woodenposttorchholder,woodenbeam,decorbeam}-*) for unknown wood species (e.g. mod-added woods)
+ - Retarget CakeBuild project to .NET 10 to match main project (unblocks ./build.sh on machines without .NET 8 runtime)
+ - Fix .vscode/launch.json hardcoded net7.0 path for CakeBuild debug profile
 
 ### v1.21.x-1.5.0
 

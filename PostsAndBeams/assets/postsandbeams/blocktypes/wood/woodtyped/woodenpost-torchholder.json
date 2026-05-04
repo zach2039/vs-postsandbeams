@@ -30,7 +30,8 @@
 		"handbook": {
 			"groupBy": [
 				"woodenposttorchholder-{wood}-*"
-			]
+			],
+			"exclude": true
 		},
 		"unstableRockStabilization": 8,
 		"attributes": {
