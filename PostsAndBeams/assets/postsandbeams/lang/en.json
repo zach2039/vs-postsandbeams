@@ -6,7 +6,7 @@
 
 	"blockhelp-woodenpost-addtorchholder": "Add torch holder",
 	
-	"block-woodenpost-empty-*": "Wooden post",
+	"block-woodenpost-*-*-empty": "Wooden post",
 
 	"block-woodenpost-acacia-barked-*": "Wooden post (Acacia)",
 	"block-woodenposttorchholder-acacia-barked-*": "Wooden post with torch holder (Acacia)",

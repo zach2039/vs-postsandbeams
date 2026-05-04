@@ -1,6 +1,25 @@
-### v1.26.x-1.5.0
+### v1.22.x-1.5.1
 
- - Update to VS-v1.26.6
+ - Update to VS-v1.22.2 (retarget to .NET 10)
+ - Fix BlockSounds.Place type change (now SoundAttributes; access .Location for AssetLocation)
+ - Remove no-op OnBlockBroken override (base method now obsolete)
+ - Fix PlayerJoin handler subscribed before serverChannel was assigned (latent NRE on early join)
+ - Tighten FindConnectedPostWithinDistanceInDirection: explicit null/air handling, safer guards
+ - Guard against null interactions array in GetPlacedBlockInteractionHelp (server-side safety)
+ - Fix unreachable lang fallback "block-woodenpost-empty-*" (variant order placed empty in 3rd slot, not 1st)
+ - Log config-load exceptions instead of silently swallowing (catch was bare)
+ - Gate torch-holder attachment (inventory consume + block exchange) on EnumAppSide.Server to avoid client/server desync
+ - Move block-lookup before inventory consume so a missing torchholder block no longer eats the held item
+ - Remove 8 dead variant keys (*-gns, *-ngs, *-egw, *-gew) from selectionboxbytype/collisionboxbytype in woodenpost.json
+ - Add "rotten" and "veryrotten" to recipe skipVariants (1.22's debarkedlog now has these wood states; outputs were unresolvable)
+ - Apply same skipVariants to decorbeam.json recipes for consistency
+ - Add "ruined" to woodenpost-torchholder material variants (1.22 vanilla torchholder now has brass/aged/ruined; players couldn't attach ruined holders to posts)
+ - Bundle modicon.png in build output (was present at source but missing from zip; per Anego's official .csproj template)
+ - Add modinfo.json $schema reference for editor IntelliSense (per Anego's official modinfo template)
+
+### v1.21.x-1.5.0
+
+ - Update to VS-v1.21.6
  - Integrate ShaeTsu's MoreTorchholders support
 
 ### v1.20.x-1.4.0

@@ -56,7 +56,7 @@
 		},
 		{
 			"code": "material",
-			"states": [ "brass", "aged" ]
+			"states": [ "brass", "aged", "ruined" ]
 		},
 		{
 			"code": "state",

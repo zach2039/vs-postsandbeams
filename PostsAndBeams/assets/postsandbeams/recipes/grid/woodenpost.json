@@ -16,7 +16,7 @@
 				"type":"block",
 				"code":"game:log-placed-*-ud",
 				"name":"wood",
-				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten"]
+				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten", "rotten", "veryrotten"]
 			}
 		},
 		"width":2,
@@ -45,7 +45,7 @@
 				"type":"block",
 				"code":"game:debarkedlog-*-ud",
 				"name":"wood",
-				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten"]
+				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten", "rotten", "veryrotten"]
 			}
 		},
 		"width":2,
@@ -74,7 +74,7 @@
 				"type":"block",
 				"code":"game:logsection-placed-*-ne-ud",
 				"name":"wood",
-				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten"]
+				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten", "rotten", "veryrotten"]
 			}
 		},
 		"width":2,

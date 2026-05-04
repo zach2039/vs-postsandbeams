@@ -286,31 +286,31 @@ namespace PostsAndBeams.ModBlock
 				ItemStack heldStack = byPlayer.InventoryManager.ActiveHotbarSlot.Itemstack;
 				if (heldStack != null && WildcardUtil.Match("*:torchholder-*-empty-north", heldStack.Collectible.Code.ToString()))
 				{
-					byPlayer.InventoryManager.ActiveHotbarSlot.TakeOut(1);
-					byPlayer.InventoryManager.ActiveHotbarSlot.MarkDirty();
-
-					string wood = this.Variant["wood"];
-                    string bark = this.Variant["bark"];
-                    string material = heldStack.Collectible.Variant["material"];
-					string facing = blockSel.Face.Code.ToString();
-
-                    Block postTorchholderBlock = world.BlockAccessor.GetBlock(new AssetLocation("postsandbeams", $"woodenposttorchholder-{wood}-{bark}-{material}-empty-{facing}"));
-
-					if (postTorchholderBlock != null)
+					// Server is authoritative for inventory consume + block exchange; clients only need to acknowledge
+					if (world.Side == EnumAppSide.Server)
 					{
-                        world.BlockAccessor.ExchangeBlock(postTorchholderBlock.BlockId, blockSel.Position);
-                        BlockSounds sounds = this.Sounds;
-                        if (((sounds != null) ? sounds.Place : null) != null)
-                        {
-                            world.PlaySoundAt(this.Sounds.Place, blockSel.Position, 0.1, byPlayer, true, 32f, 1f);
-                        }
-                        return true;
-                    }
-					else
-					{
-                        world.Api.Logger.Warning("[PostsAndBeams] Could not torch holder post block for " + heldStack.ToString());
-                        return false;
-					}	
+						string wood = this.Variant["wood"];
+						string bark = this.Variant["bark"];
+						string material = heldStack.Collectible.Variant["material"];
+						string facing = blockSel.Face.Code.ToString();
+
+						Block postTorchholderBlock = world.BlockAccessor.GetBlock(new AssetLocation("postsandbeams", $"woodenposttorchholder-{wood}-{bark}-{material}-empty-{facing}"));
+
+						if (postTorchholderBlock == null)
+						{
+							world.Api.Logger.Warning("[PostsAndBeams] Could not find torch holder post block for " + heldStack.ToString());
+							return false;
+						}
+
+						byPlayer.InventoryManager.ActiveHotbarSlot.TakeOut(1);
+						byPlayer.InventoryManager.ActiveHotbarSlot.MarkDirty();
+						world.BlockAccessor.ExchangeBlock(postTorchholderBlock.BlockId, blockSel.Position);
+						if (this.Sounds?.Place.Location != null)
+						{
+							world.PlaySoundAt(this.Sounds.Place.Location, blockSel.Position, 0.1, byPlayer, true, 32f, 1f);
+						}
+					}
+					return true;
 				}
 			}
 
@@ -319,7 +319,7 @@ namespace PostsAndBeams.ModBlock
 
         public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection blockSel, IPlayer forPlayer)
         {
-			if (this.Variant["type"] == "empty" && blockSel.Face.IsHorizontal)
+			if (this.Variant["type"] == "empty" && blockSel.Face.IsHorizontal && this.interactions != null)
 			{
 				//ItemStack heldStack = forPlayer.InventoryManager.ActiveHotbarSlot.Itemstack;
 				//if (heldStack != null && WildcardUtil.Match("*:torchholder-*-empty-north", heldStack.Collectible.Code.ToString()))

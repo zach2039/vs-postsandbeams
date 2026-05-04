@@ -21,7 +21,7 @@ namespace PostsAndBeams
         {
             string cfgFileName = "PostsAndBeams.json";
 
-            try 
+            try
             {
                 PostsAndBeamsConfig cfgFromDisk;
                 if ((cfgFromDisk = api.LoadModConfig<PostsAndBeamsConfig>(cfgFileName)) == null)
@@ -32,9 +32,10 @@ namespace PostsAndBeams
                 {
                     PostsAndBeamsConfig.Loaded = cfgFromDisk;
                 }
-            } 
-            catch 
+            }
+            catch (Exception e)
             {
+                api.Logger.Warning("[PostsAndBeams] Failed to load {0}, reverting to defaults: {1}", cfgFileName, e);
                 api.StoreModConfig(PostsAndBeamsConfig.Loaded, cfgFileName);
             }
 
@@ -67,12 +68,12 @@ namespace PostsAndBeams
 
         public override void StartServerSide(ICoreServerAPI sapi)
         {
-            sapi.Event.PlayerJoin += this.OnPlayerJoin; 
-            
-            // Create server channel for config data sync
+            // Channel must exist before PlayerJoin can fire and call OnPlayerJoin
             this.serverChannel = sapi.Network.RegisterChannel("postsandbeams")
                 .RegisterMessageType<SyncConfigClientPacket>()
                 .SetMessageHandler<SyncConfigClientPacket>((player, packet) => {});
+
+            sapi.Event.PlayerJoin += this.OnPlayerJoin;
         }
 
         public override void StartClientSide(ICoreClientAPI capi)
