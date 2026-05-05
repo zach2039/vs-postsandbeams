@@ -4,7 +4,7 @@
   "modid": "postsandbeams",
   "name": "Posts and Beams",
   "authors": ["Zach2039"],
-  "contributors": ["ShaeTsu"],
+  "contributors": ["ShaeTsu", "Tirello-Nardell"],
   "description": "Adds wood beams and posts, used for supporting unstable rock.",
   "version": "1.5.1",
   "dependencies": {
