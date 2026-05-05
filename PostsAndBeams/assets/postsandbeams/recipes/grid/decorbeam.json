@@ -6,7 +6,7 @@
 				"type":"block",
 				"code":"postsandbeams:woodenpost-*-barked-ew",
 				"name":"wood",
-				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten"]
+				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten", "rotten", "veryrotten"]
 			}
 		},
 		"width":2,
@@ -25,7 +25,7 @@
 				"type":"block",
 				"code":"postsandbeams:decorbeam-*-barked-we",
 				"name":"wood",
-				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten"]
+				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten", "rotten", "veryrotten"]
 			}
 		},
 		"width":1,
@@ -44,7 +44,7 @@
 				"type":"block",
 				"code":"postsandbeams:woodenpost-*-debarked-ew",
 				"name":"wood",
-				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten"]
+				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten", "rotten", "veryrotten"]
 			}
 		},
 		"width":2,
@@ -63,7 +63,7 @@
 				"type":"block",
 				"code":"postsandbeams:decorbeam-*-debarked-we",
 				"name":"wood",
-				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten"]
+				"skipVariants": ["agedebony", "rottenebony", "veryaged", "veryagedrotten", "rotten", "veryrotten"]
 			}
 		},
 		"width":1,

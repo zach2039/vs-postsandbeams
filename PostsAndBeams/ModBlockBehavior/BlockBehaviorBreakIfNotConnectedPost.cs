@@ -42,34 +42,25 @@ namespace PostsAndBeams.ModBlockBehavior
 		/// <returns>distance from post, starting at 1 if directly adjacent; -1 if not found</returns>
 		public int FindConnectedPostWithinDistanceInDirection(IWorldAccessor world, BlockPos posBeam, BlockFacing searchDirection, int maxDistance, bool ignoreAir = false)
 		{
-			int distance = -1;
-			// Search in the direction until we find a post
 			for (int i = 1; i <= maxDistance; i++)
 			{
 				Block blockFound = world.BlockAccessor.GetBlock(posBeam.Copy().Add(searchDirection, i));
 
-				if (blockFound == null && !ignoreAir)
+				// GetBlock can return null at unloaded chunks; air block has Id 0
+				bool isAirOrUnloaded = blockFound == null || blockFound.Id == 0;
+				if (isAirOrUnloaded)
 				{
-					// Exit early if no block found
-					distance = -1;
-					break;
+					if (ignoreAir) continue;
+					return -1;
 				}
 
-				if (blockFound is BlockPost)
-				{
-					distance = i; 
-					break;
-				}
-				else if (blockFound.GetBehavior<BlockBehaviorBreakIfNotConnectedPost>() == null && (blockFound != null && !ignoreAir))
-				{
-					// Exit early if non-beam block separates post and beam
-					distance = -1;
-					break;
-				}
+				if (blockFound is BlockPost) return i;
+
+				// Anything that isn't a beam (lacks our behavior) breaks the chain
+				if (blockFound.GetBehavior<BlockBehaviorBreakIfNotConnectedPost>() == null) return -1;
 			}
 
-			// -1 means a post was not in the max allowable distance
-			return distance;
+			return -1;
 		}
 
         public bool IsConnectedAndFacingPost(IWorldAccessor world, BlockPos pos)
@@ -98,9 +89,5 @@ namespace PostsAndBeams.ModBlockBehavior
 			return true;
 		}
 
-		public override void OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref EnumHandling handling)
-		{
-			handling = EnumHandling.PassThrough;
-		}
     }
 }

@@ -7,7 +7,7 @@ Overview
 
 Adds large wooden beams and posts of varying log types, which can help prevent cave-ins similar to support beams.
 
-- Posts have a support factor of 6, while beams have a support factor of 8. For reference, vanilla beams have a support factor of 3.
+- Posts have a support factor of 8, while beams have a support factor of 6. For reference, vanilla beams have a support factor of 3.
 
 - Place with shift to put down a single post or beam section; place without sneaking to auto-place posts and beams.
 

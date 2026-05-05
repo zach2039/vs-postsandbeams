@@ -30,7 +30,8 @@
 		"handbook": {
 			"groupBy": [
 				"woodenposttorchholder-{wood}-*"
-			]
+			],
+			"exclude": true
 		},
 		"unstableRockStabilization": 8,
 		"attributes": {
@@ -56,7 +57,7 @@
 		},
 		{
 			"code": "material",
-			"states": [ "brass", "aged" ]
+			"states": [ "brass", "aged", "ruined" ]
 		},
 		{
 			"code": "state",

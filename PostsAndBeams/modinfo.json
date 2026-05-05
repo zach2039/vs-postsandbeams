@@ -1,11 +1,12 @@
 {
+  "$schema": "https://moddbcdn.vintagestory.at/schema/modinfo.latest.json",
   "type": "code",
   "modid": "postsandbeams",
   "name": "Posts and Beams",
   "authors": ["Zach2039"],
   "contributors": ["ShaeTsu"],
   "description": "Adds wood beams and posts, used for supporting unstable rock.",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "dependencies": {
     "game": "*"
   },
