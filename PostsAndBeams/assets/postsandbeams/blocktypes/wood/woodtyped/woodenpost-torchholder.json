@@ -24,7 +24,8 @@
 		{
 			"name": "RopeTieable"
 		},
-		{ "name": "Lockable" }
+		{ "name": "Lockable" },
+		{ "name": "LanternAttachable" }
 	],
 	"attributes": {
 		"handbook": {
