@@ -1,3 +1,17 @@
+### v1.22.x-1.6.0
+
+ - Add lantern attachment for wooden posts: right-click an empty post on any horizontal face with a vanilla lantern in hand to fuse them into a hybrid block; the lantern hugs the post on the clicked face
+ - Add lantern attachment for wooden beams: right-click the underside of a beam with a vanilla lantern in hand to suspend a chain-and-lantern beneath it
+ - Right-click either hybrid with an empty hand to detach the lantern; material/lining/glass attributes are preserved on the returned itemstack
+ - Breaking either hybrid drops the lantern plus a wooden-post-ew item (matches the existing beam drop convention)
+ - Normalise all wooden-post drops to woodenpost-{wood}-{bark}-ew via woodenpost.json drops field — every post variant (empty, n, ew, ne, etc.) now drops the same item the creative inventory provides
+ - Lantern attachment refuses on connected posts (matches existing torchholder convention) and refuses to create a stacked-conflict pair with the other hybrid type
+ - Narrow CanAttach.sides on woodenpost.json and woodenbeam.json to up/down so vanilla OmniAttachable can no longer redirect lantern placement onto post/beam sides where it would float
+ - Add LanternAttachable behavior to woodenpost-torchholder.json so a torchholder-post refuses lantern clicks instead of letting OmniAttachable redirect to a nearby beam
+ - Lantern body geometry is loaded from vanilla ground.json/ceiling.json at runtime via BlockLantern.GenMesh, so future vanilla lantern visual updates are picked up automatically
+ - Mesh caching via ObjectCacheUtil keyed on (variant, material/lining/glass), matching the vanilla BELantern pattern
+ - Multiplayer correctness: SetBlock + DidPlace run on both sides for client-side visual prediction; inventory consume and sound stay server-authoritative; DetachLantern is server-only
+
 ### v1.22.x-1.5.1
 
  - Update to VS-v1.22.2 (retarget to .NET 10)
