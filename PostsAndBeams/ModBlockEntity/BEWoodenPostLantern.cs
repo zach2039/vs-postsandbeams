@@ -31,9 +31,13 @@ namespace PostsAndBeams.ModBlockEntity
             catch (Exception e)
             {
                 this.Api?.Logger?.Error("[PostsAndBeams] BEWoodenPostLantern.OnTesselation at {0}: {1}", this.Pos, e);
-                return base.OnTesselation(mesher, tesselator);
+                // Don't delegate to base: BELantern.OnTesselation reads BlockLantern's
+                // private tmpTextureSource which is only populated by a successful GenMesh
+                // call. In this catch path GenMesh hasn't run, so base would NPE every
+                // frame the chunk re-meshes. Let the block's static JSON shape render.
+                return false;
             }
-            if (mesh == null) return base.OnTesselation(mesher, tesselator);
+            if (mesh == null) return false;
             mesher.AddMeshData(mesh, 1);
             return true;
         }
