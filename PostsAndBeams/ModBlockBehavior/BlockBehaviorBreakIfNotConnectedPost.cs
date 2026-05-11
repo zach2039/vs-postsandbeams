@@ -67,9 +67,13 @@ namespace PostsAndBeams.ModBlockBehavior
 		{
 			int maxPostDistance = PostsAndBeamsConfig.Loaded.MaxDistanceBeamFromPostBlocks;
 
-			// Search for valid post connection in either end directions of beam
-			BlockFacing searchDirA = BlockFacing.FromFirstLetter(this.block.Variant["orientation"][0]);
-			BlockFacing searchDirB = BlockFacing.FromFirstLetter(this.block.Variant["orientation"][1]);
+			// Search for valid post connection in either end directions of beam.
+			// orientation must be a 2-char code like "ns" or "we"; bail if the
+			// behavior is somehow attached to a block whose variant doesn't match.
+			string orientation = this.block.Variant["orientation"];
+			if (orientation == null || orientation.Length < 2) return false;
+			BlockFacing searchDirA = BlockFacing.FromFirstLetter(orientation[0]);
+			BlockFacing searchDirB = BlockFacing.FromFirstLetter(orientation[1]);
 
 			int distanceA = FindConnectedPostWithinDistanceInDirection(world, pos, searchDirA, maxPostDistance);
 			int distanceB = -1;

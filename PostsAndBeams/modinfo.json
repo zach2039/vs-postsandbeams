@@ -5,10 +5,10 @@
   "name": "Posts and Beams",
   "authors": ["Zach2039"],
   "contributors": ["ShaeTsu", "Tirello-Nardell"],
-  "description": "Adds wood beams and posts, used for supporting unstable rock.",
-  "version": "1.5.1",
+  "description": "Adds wood beams and posts that support unstable rock. Posts hold torch holders and lanterns; beams suspend lanterns from underneath.",
+  "version": "1.6.0",
   "dependencies": {
-    "game": "*"
+    "game": "1.22.0"
   },
   "Side": "Universal",
   "RequiredOnClient": true,

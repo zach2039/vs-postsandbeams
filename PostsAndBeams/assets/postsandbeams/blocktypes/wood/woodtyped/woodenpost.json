@@ -16,7 +16,8 @@
 		},
 		{
 			"name":"RopeTieable"
-		}
+		},
+		{ "name": "LanternAttachable" }
 	],
 	"attributes":{
 		"handbook":{
@@ -70,6 +71,12 @@
 			"*-ew"
 		]
 	},
+	"drops": [
+		{
+			"type": "block",
+			"code": "woodenpost-{wood}-{bark}-ew"
+		}
+	],
 	"shapebytype":{
 		"*-empty":{
 			"base":"postsandbeams:block/wood/post/empty"

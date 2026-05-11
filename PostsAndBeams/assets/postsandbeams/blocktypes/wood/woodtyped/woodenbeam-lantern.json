@@ -1,0 +1,108 @@
+{
+	"code": "woodenbeam-lantern",
+	"class": "BlockWoodenBeamLantern",
+	"entityClass": "WoodenBeamLantern",
+	"storageFlags": 257,
+	"behaviors": [
+		{ "name": "BreakIfNotConnectedPost" },
+		{ "name": "Lockable" }
+	],
+	"attributes": {
+		"handbook": {
+			"groupBy": [ "woodenbeam-lantern-{wood}-*" ],
+			"exclude": true
+		},
+		"postConnect": {
+			"ns": true,
+			"we": true
+		},
+		"unstableRockStabilization": 6,
+		"attributes": {
+			"reinforcable": true
+		}
+	},
+	"variantgroups": [
+		{
+			"code": "wood",
+			"states": [ "aged" ],
+			"loadFromPropertiesCombine": [ "game:block/wood" ]
+		},
+		{
+			"code": "bark",
+			"states": [ "barked", "debarked" ]
+		},
+		{
+			"code": "orientation",
+			"states": [ "ns", "we" ]
+		},
+		{
+			"code": "size",
+			"states": [ "small", "large" ]
+		}
+	],
+	"creativeinventory": {
+		"general": [ "*-aged-debarked-we-small", "*-aged-debarked-we-large" ],
+		"decorative": [ "*-aged-debarked-we-small", "*-aged-debarked-we-large" ]
+	},
+	"shapeByType": {
+		"*-ns-*": { "base": "postsandbeams:block/wood/beam", "rotateY": 90 },
+		"*-we-*": { "base": "postsandbeams:block/wood/beam", "rotateY": 0 }
+	},
+	"texturesByType": {
+		"*-barked-*": {
+			"bark-h": {
+				"base": "game:block/wood/bark/{wood}-h",
+				"overlays": [ "game:block/slightlydarker" ]
+			},
+			"bark": { "base": "game:block/wood/bark/{wood}" },
+			"cut":  { "base": "game:block/wood/debarked/{wood}" }
+		},
+		"*-debarked-*": {
+			"bark-h": {
+				"base": "game:block/wood/debarked/{wood}",
+				"overlays": [ "game:block/slightlydarker" ]
+			},
+			"bark": { "base": "game:block/wood/debarked/{wood}", "rotation": 90 },
+			"cut":  { "base": "game:block/wood/debarked/{wood}" }
+		}
+	},
+	"drawtype": "JSON",
+	"blockmaterial": "Wood",
+	"sidesolid": { "all": false },
+	"sideopaque": { "all": false },
+	"resistance": 3,
+	"lightAbsorption": 0,
+	"lightHsvByType": {
+		"*-small": [ 7, 3, 18 ],
+		"*-large": [ 7, 3, 20 ]
+	},
+	"rainPermeable": true,
+	"sounds": {
+		"place": "game:block/planks",
+		"hit": "game:block/planks",
+		"break": "game:block/planks",
+		"walk": "game:walk/wood"
+	},
+	"selectionbox": {
+		"x1": 0.0, "y1": 0.5, "z1": 0.25,
+		"x2": 1.0, "y2": 1.0, "z2": 0.75,
+		"rotateYByType": {
+			"*-ns-*": 90,
+			"*-we-*": 0
+		}
+	},
+	"collisionbox": {
+		"x1": 0.0, "y1": 0.5, "z1": 0.25,
+		"x2": 1.0, "y2": 1.0, "z2": 0.75,
+		"rotateYByType": {
+			"*-ns-*": 90,
+			"*-we-*": 0
+		}
+	},
+	"combustibleProps": {
+		"burnTemperature": 600,
+		"burnDuration": 20
+	},
+	"materialDensity": 600,
+	"replaceable": 500
+}

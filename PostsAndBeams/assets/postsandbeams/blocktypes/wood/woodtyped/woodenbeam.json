@@ -15,7 +15,8 @@
 			"name": "CanAttach",
 			"properties": {
 				"sides": [
-					"up"
+					"up",
+					"down"
 				]
 			}
 		},
@@ -24,7 +25,8 @@
 		},
 		{
 			"name": "RopeTieable"
-		}
+		},
+		{ "name": "BeamLanternAttachable" }
 	],
 	"variantgroups":[
 		{

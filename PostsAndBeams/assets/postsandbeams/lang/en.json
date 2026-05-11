@@ -5,6 +5,8 @@
 	"game:heldhelp-placeauto": "Place multiple",
 
 	"blockhelp-woodenpost-addtorchholder": "Add torch holder",
+	"blockhelp-woodenpostlantern-detach": "Detach lantern",
+	"blockhelp-woodenbeamlantern-detach": "Detach lantern",
 	
 	"block-woodenpost-*-*-empty": "Wooden post",
 
@@ -659,6 +661,8 @@
 	"block-decorbeam-yew-debarked-*": "Debarked decorative wooden beam (Yew)",
 
 	"block-woodenposttorchholder-*": "Wooden post with torch holder",
+	"block-woodenpost-lantern-*": "Wooden post with lantern",
+	"block-woodenbeam-lantern-*": "Wooden beam with lantern",
 	"block-woodenpost-*": "Wooden post",
 	"block-woodenbeam-*": "Wooden beam",
 	"block-decorbeam-*": "Decorative wooden beam"

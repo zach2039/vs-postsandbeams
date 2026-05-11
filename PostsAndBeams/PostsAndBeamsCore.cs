@@ -8,6 +8,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Server;
 using PostsAndBeams.ModBlock;
 using PostsAndBeams.ModBlockBehavior;
+using PostsAndBeams.ModBlockEntity;
 using PostsAndBeams.ModNetwork;
 
 namespace PostsAndBeams
@@ -49,10 +50,17 @@ namespace PostsAndBeams
 
             api.RegisterBlockClass("BlockPost", typeof(BlockPost));
             api.RegisterBlockClass("BlockTorchHolderOrientable", typeof(BlockTorchHolderOrientable));
-            
+            api.RegisterBlockClass("BlockWoodenPostLantern", typeof(BlockWoodenPostLantern));
+            api.RegisterBlockClass("BlockWoodenBeamLantern", typeof(BlockWoodenBeamLantern));
+
+            api.RegisterBlockEntityClass("WoodenPostLantern", typeof(BEWoodenPostLantern));
+            api.RegisterBlockEntityClass("WoodenBeamLantern", typeof(BEWoodenBeamLantern));
+
             api.RegisterBlockBehaviorClass("BreakIfNotConnectedPost", typeof(BlockBehaviorBreakIfNotConnectedPost));
             api.RegisterBlockBehaviorClass("NWOrientableCustomDrops", typeof(BlockBehaviorNWOrientableCustomDrops));
             api.RegisterBlockBehaviorClass("HorizontalOrientableHandleDrops", typeof(BlockBehaviorHorizontalOrientableHandleDrops));
+            api.RegisterBlockBehaviorClass("LanternAttachable", typeof(BlockBehaviorLanternAttachable));
+            api.RegisterBlockBehaviorClass("BeamLanternAttachable", typeof(BlockBehaviorBeamLanternAttachable));
 
             api.Logger.Notification("Loaded Posts And Beams!");
         }
