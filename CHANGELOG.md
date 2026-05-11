@@ -11,6 +11,13 @@
  - Lantern body geometry is loaded from vanilla ground.json/ceiling.json at runtime via BlockLantern.GenMesh, so future vanilla lantern visual updates are picked up automatically
  - Mesh caching via ObjectCacheUtil keyed on (variant, material/lining/glass), matching the vanilla BELantern pattern
  - Multiplayer correctness: SetBlock + DidPlace run on both sides for client-side visual prediction; inventory consume and sound stay server-authoritative; DetachLantern is server-only
+ - Add candle/glass/lining/material-diamond/material-grid texture defaults to lantern bracket shapes with explicit game: domain prefix (vanilla BlockLantern's tessellation merges in lantern body elements that reference these texture codes; without the defaults the candle inside the lantern rendered as an all-white quad)
+ - BEWoodenPostLantern.OnTesselation no longer delegates to base.OnTesselation in error-fallback paths (base reads BlockLantern's tmpTextureSource, which is only populated by a successful GenMesh; falling back through it would NPE every frame the chunk re-meshes); returns false instead so the block's static JSON shape renders
+ - Block OmniAttachable redirect when the hybrid block lookup returns null (e.g. compat-mod woods without a corresponding hybrid blocktype patch): both lantern-attach behaviors now consume the interaction with PreventDefault rather than falling through to vanilla, which would have placed the lantern on a neighbouring cell
+ - Apply the same multiplayer-correctness pattern to the torchholder swap in BlockPost.OnBlockInteractStart: ExchangeBlock now runs on both sides for client visual prediction, and the inventory consume is gated on CurrentGameMode != Creative (was previously consuming torchholders even in creative mode)
+ - Guard against null/short orientation values in BlockBehaviorBreakIfNotConnectedPost.IsConnectedAndFacingPost (currently safe with ns/we beams, defensive against future blocks that might omit the variant)
+ - modinfo: description now mentions torch holders and lanterns; game dependency pinned to 1.22.0 minimum (the mod uses 1.22-only API surface and would crash at runtime on 1.21.x rather than refusing to load with the previous "*" wildcard)
+ - README: drop "lantern attachment" from Future Plans (shipped); add Overview bullet describing the lantern interaction alongside the existing torchholder bullet
 
 ### v1.22.x-1.5.1
 
