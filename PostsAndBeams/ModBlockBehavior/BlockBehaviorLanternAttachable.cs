@@ -71,7 +71,14 @@ namespace PostsAndBeams.ModBlockBehavior
             Block hybridBlock = world.GetBlock(hybridCode);
             if (hybridBlock == null)
             {
-                return base.OnBlockInteractStart(world, byPlayer, blockSel, ref handling);
+                // Consume the interaction rather than falling through. Vanilla lantern's
+                // OmniAttachable would otherwise search neighbouring cells for any valid
+                // attachment surface (e.g. a beam underside above), placing the lantern
+                // somewhere unexpected. A missing hybrid variant (compat-mod wood without
+                // a corresponding hybrid blocktype patch) should silently refuse, not
+                // redirect.
+                handling = EnumHandling.PreventDefault;
+                return true;
             }
 
             string material = heldStack.Attributes.GetString("material", "copper");
