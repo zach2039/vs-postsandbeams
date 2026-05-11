@@ -13,6 +13,8 @@ Adds large wooden beams and posts of varying log types, which can help prevent c
 
 - Posts that have no connections can have a torch holder attached; posts with torch holders cannot connect to beams nor have more than 1 torch holder at a time.
 
+- Lanterns can be attached to empty posts on any horizontal face or suspended from the underside of a beam; right-click with a lantern in hand to attach, right-click with an empty hand to detach. The lantern's material, lining, and glass are preserved on detach.
+
 
 Config Settings (`VintageStoryData/ModConfig/PostsAndBeams.json`)
 --------
@@ -30,7 +32,6 @@ Future Plans
 --------
 
 - Snow pile-up models
-- Allow lanterns to be attached similar to torch holders
 
 
 Compatibility

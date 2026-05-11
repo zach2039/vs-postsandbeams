@@ -4,7 +4,7 @@
  - Add lantern attachment for wooden beams: right-click the underside of a beam with a vanilla lantern in hand to suspend a chain-and-lantern beneath it
  - Right-click either hybrid with an empty hand to detach the lantern; material/lining/glass attributes are preserved on the returned itemstack
  - Breaking either hybrid drops the lantern plus a wooden-post-ew item (matches the existing beam drop convention)
- - Normalise all wooden-post drops to woodenpost-{wood}-{bark}-ew via woodenpost.json drops field — every post variant (empty, n, ew, ne, etc.) now drops the same item the creative inventory provides
+ - Normalise all wooden-post drops to woodenpost-{wood}-{bark}-ew via woodenpost.json drops field; every post variant (empty, n, ew, ne, etc.) now drops the same item the creative inventory provides
  - Lantern attachment refuses on connected posts (matches existing torchholder convention) and refuses to create a stacked-conflict pair with the other hybrid type
  - Narrow CanAttach.sides on woodenpost.json and woodenbeam.json to up/down so vanilla OmniAttachable can no longer redirect lantern placement onto post/beam sides where it would float
  - Add LanternAttachable behavior to woodenpost-torchholder.json so a torchholder-post refuses lantern clicks instead of letting OmniAttachable redirect to a nearby beam
@@ -30,7 +30,7 @@
  - Add "ruined" to woodenpost-torchholder material variants (1.22 vanilla torchholder now has brass/aged/ruined; players couldn't attach ruined holders to posts)
  - Bundle modicon.png in build output (was present at source but missing from zip; per Anego's official .csproj template)
  - Add modinfo.json $schema reference for editor IntelliSense (per Anego's official modinfo template)
- - Hide woodenposttorchholder variants from survival handbook (matches vanilla pattern for lantern, supportbeam — they're not directly craftable)
+ - Hide woodenposttorchholder variants from survival handbook (matches vanilla pattern for lantern, supportbeam, since they're not directly craftable)
  - Add lang fallbacks (block-{woodenpost,woodenposttorchholder,woodenbeam,decorbeam}-*) for unknown wood species (e.g. mod-added woods)
  - Retarget CakeBuild project to .NET 10 to match main project (unblocks ./build.sh on machines without .NET 8 runtime)
  - Fix .vscode/launch.json hardcoded net7.0 path for CakeBuild debug profile
