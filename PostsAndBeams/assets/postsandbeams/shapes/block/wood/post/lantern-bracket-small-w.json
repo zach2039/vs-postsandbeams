@@ -8,9 +8,14 @@
 	"textureSizes": {
 	},
 	"textures": {
-		"bark": "block/wood/bark/pine",
-		"cut": "block/wood/debarked/pine",
-		"material": "block/metal/lantern/copper"
+		"bark": "game:block/wood/bark/pine",
+		"cut": "game:block/wood/debarked/pine",
+		"material": "game:block/metal/lantern/copper",
+		"lining": "game:block/metal/lantern/copper",
+		"material-diamond": "game:block/metal/lantern/grid/copper",
+		"material-grid": "game:block/metal/lantern/grid/copper",
+		"glass": "game:block/glass/quartz",
+		"candle": "game:block/candle"
 	},
 	"elements": [
 		{
